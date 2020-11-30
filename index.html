@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Occasionator</title>
+    <link rel="stylesheet" type="text/css" href="./assets/style.css" />
+    <script defer type="text/javascript" src="./src/index.js"></script>
+  </head>
+  <body>
+		
+		<div id="side-menu">
+			<h3 id="app-title">Occasionator</h3>
+
+			<button>Login</button><br>
+			<button>Sign Up</button><br>
+			<button>Logout</button><br>
+
+			<select name="occasion" id="occasion-select"></select>
+			<p>Occasionator Copyright 2020. A Lee Michaeli & Roman Tetelbaum Project</p>
+		</div>
+
+		<div id="main-menu">
+
+			<div id="login-page"></div>
+			<div id="account-page"></div>
+			<div id="profile-page"></div>
+
+			<div id="card-page">
+				<div id="card-menu">
+					<img src="./assets/occasions/birthday/birthday01.jpg" alt="Birthday Card" />
+				</div>
+
+				<img class="card-image" src="./assets/occasions/birthday/birthday01.jpg" alt="Birthday Card" />
+
+				<form id="email-form" autocomplete="off">
+					<h4>Send a Card!</h4>
+
+					<label for="recipient">Recipient Email: </label>
+					<input type="email" name="recipient" id="recipient" placeholder="name@example.com"/>
+
+					<label for="sender">Sender Email: </label>
+					<input type="email" name="sender" id="sender" placeholder="name@example.com"/>
+
+					<label for="subject">Subject: </label>
+					<input type="email" name="subject" id="subject" placeholder="Happy Birthday Grandma!"/>
+
+					<label for="note">Note: </label>
+					<input type="textarea" rows="5" name="note" id="note" placeholder="Happy Birthday Grandma! - Love, Rose"/>
+
+					<input type="submit" value="Send" />  
+				</form>
+			</div>
+
+		</div>
+
+  </body>
+</html>
