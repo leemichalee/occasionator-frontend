@@ -4,6 +4,7 @@ let userEmail;
 let userFirstName;
 let userLastName;
 let userId;
+let currentUser;
 
 // DOM ELEMENTS
 
@@ -21,6 +22,10 @@ const logoutBtn = document.querySelector('#logoutBtn')
 const editUserBtn = document.querySelector('#editUserBtn')
 const signupForm = document.querySelector('#signup-form')
 const editUserForm = document.querySelector('#edit-user-form')
+const deleteUserBtn = document.querySelector('#deleteUserBtn')
+const mainDiv = document.querySelector('.main-div')
+const reminderForm = document.querySelector('#reminder-form')
+const reminderUl = document.querySelector('#reminderUl')
 
 // EVENT HANDLERS
 
@@ -77,6 +82,22 @@ editUserForm.addEventListener('submit', event => {
 	fetchPatchUser(data)
 })
 
+reminderForm.addEventListener('submit', event => {
+	event.preventDefault()
+	const data = {
+		text: event.target.text.value,
+		user_id: parseInt(userId)
+	}
+	fetchPostReminders(data)
+})
+
+mainDiv.addEventListener('click', event => {
+	if (event.target.matches('#deleteUserBtn')) {
+		console.log(event.target)
+		fetchDeleteUser(userId)
+	}
+})
+
 // FETCHERS
 
 function fetchGetEmail() {
@@ -122,6 +143,34 @@ function fetchPatchUser(data) {
 			userFirstName = data.firstName
 			userLastName = data.lastName
 			alert("Your user info has been updated successfully!")
+	})
+}
+
+function fetchDeleteUser(id) {
+	fetch(`http://localhost:3000/api/v1/users/${id}`, {
+	  method: 'DELETE',
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data)
+			alert("Account Deleted")
+			renderLoggedOut()
+	})
+}
+
+function fetchPostReminders(data) {
+	fetch('http://localhost:3000/api/v1/reminders', {
+	  method: 'POST',
+	  headers: {
+	    'Content-Type': 'application/json',
+	  },
+	  body: JSON.stringify(data),
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data)
+			currentUser.reminders.push(data)
+			renderEditUser()
 	})
 }
 
@@ -179,7 +228,7 @@ function renderLoggedIn(usersArray) {
 		singupBtn.style.display = 'none'
 		logoutBtn.style.display = ''
 		editUserBtn.style.display = ''
-		const currentUser = usersArray.find(user => user.email === userEmail)
+		currentUser = usersArray.find(user => user.email === userEmail)
 		userFirstName = currentUser.firstName
 		userLastName = currentUser.lastName
 		userId = currentUser.id
@@ -199,11 +248,15 @@ function renderLoggedOut() {
 	loginBtn.style.display = ''
 	singupBtn.style.display = ''
 	logoutBtn.style.display = 'none'
+	editUserForm.style.display = 'none'
 	editUserBtn.style.display = 'none'
+	deleteUserBtn.style.display = 'none'
+	cardImage.style.display = ''
 	userEmail = ''
 	userFirstName = ''
 	userLastName = ''
 	userId = ''
+	currentUser = ''
 }
 
 function renderSignUp() {
@@ -233,4 +286,15 @@ function renderEditUser() {
 	editUserForm.email.value = userEmail
 	editUserForm.first_name.value = userFirstName
 	editUserForm.last_name.value = userLastName
+	deleteUserBtn.style.display = ''
+	reminderForm.style.display = ''
+	reminderUl.innerHTML = ''
+	reminderUl.style.display = ''
+	if (currentUser.reminders) {
+			currentUser.reminders.forEach( reminder => {
+			const li = document.createElement("li")
+			li.textContent = reminder.text
+			reminderUl.append(li)
+		})
+	}
 }
