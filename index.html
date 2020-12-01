@@ -18,8 +18,18 @@
 		<div class="nav-div">
 			<button>Login</button><br>
 			<button>Sign Up</button><br>
-			<button>Logout</button><br>
-			<select name="occasion" id="occasion-select"></select>
+			<button style="display:none">Logout</button><br>
+			<button style="display:none">Edit User</button><br>
+			<select name="occasion" id="occasion-select">
+				<option value="">-Please choose an occasion-</option>
+    		<option value="birthday">Birthday</option>
+    		<option value="christmas">Christmas</option>
+    		<option value="fathers">Father's Day</option>
+    		<option value="hannukah">Hannukah</option>
+    		<option value="holidays">Happy Holidays</option>
+    		<option value="mothers">Mother's Day</option>
+    		<option value="valentines">Valentine's Day</option>
+			</select>
 		</div>
 
 		<div class="card-div">
@@ -35,14 +45,14 @@
 
 		<div class="main-div">
 
-			<form id="login-form" autocomplete="off">
+			<form id="login-form" autocomplete="off" style="display:none">
 				<label for="email"> Email:</label> 
 				<input type="email" placeholder="name@example.com" /></br>
 
 				<input type="submit" value="Log In" />
 			</form>
 
-			<form id="signup-form" autocomplete="off">
+			<form id="signup-form" autocomplete="off" style="display:none">
 				<label for="email"> Email Address:</label> 
 				<input type="email" name="email" placeholder="name@example.com" /></br>
 
@@ -54,7 +64,19 @@
 				<input type="submit" value= "Sign Up" />
 			</form>
 
-			<from id="reminder-form" autocomplete="off">
+			<form id="edit-user-form" autocomplete="off" style="display:none">
+				<label for="email"> Email Address:</label> 
+				<input type="email" name="email" placeholder="name@example.com" /></br>
+
+				<label for="first_name">First Name:</label> 
+				<input type="first_name" name="first_name" placeholder="Jane" /></br>
+
+				<label for="last_name">Last Name:</label> 
+				<input type="last_name" name="last_name" placeholder="Doe" /></br>
+				<input type="submit" value= "Save User Changes" />
+			</form>
+
+			<form id="reminder-form" autocomplete="off" style="display:none">
 				<label for="text">Reminder:</label>
 				<input type="text" name="text" placeholder="New Reminder" /> </br>
 				<input type="submit" value="Create" />
@@ -68,7 +90,9 @@
 
 			<h1>Send a Card!</h1>
 
-			<form id="email-form" autocomplete="off">
+			<h3>Please Log In to Send a Card</h3>
+
+			<form id="email-form" autocomplete="off" style="display:none">
 
 				<label for="recipient">Recipient Email: </label>
 				<input type="email" name="recipient" placeholder="name@example.com" /><br>
