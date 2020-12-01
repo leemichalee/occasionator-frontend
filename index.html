@@ -16,16 +16,16 @@
 		</div>
 
 		<div class="nav-div">
-			<button>Login</button><br>
-			<button>Sign Up</button><br>
-			<button style="display:none">Logout</button><br>
-			<button style="display:none">Edit User</button><br>
+			<button id="loginBtn">Log In</button><br>
+			<button id="signupBtn">Sign Up</button><br>
+			<button id="logoutBtn" style="display:none">Logout</button><br>
+			<button id="editUserBtn" style="display:none">Edit User</button><br>
 			<select name="occasion" id="occasion-select">
 				<option value="">-Please choose an occasion-</option>
     		<option value="birthday">Birthday</option>
     		<option value="christmas">Christmas</option>
     		<option value="fathers">Father's Day</option>
-    		<option value="hannukah">Hannukah</option>
+    		<option value="hanukkah">Hanukkah</option>
     		<option value="holidays">Happy Holidays</option>
     		<option value="mothers">Mother's Day</option>
     		<option value="valentines">Valentine's Day</option>
@@ -47,7 +47,7 @@
 
 			<form id="login-form" autocomplete="off" style="display:none">
 				<label for="email"> Email:</label> 
-				<input type="email" placeholder="name@example.com" /></br>
+				<input type="email" name="email" placeholder="name@example.com" /></br>
 
 				<input type="submit" value="Log In" />
 			</form>
@@ -88,9 +88,9 @@
 			
 			<br>
 
-			<h1>Send a Card!</h1>
+			<h1 id="mainDivH1">Send a Card!</h1>
 
-			<h3>Please Log In to Send a Card</h3>
+			<h3 id="mainDivH3">Please Log In to Send a Card</h3>
 
 			<form id="email-form" autocomplete="off" style="display:none">
 
