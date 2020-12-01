@@ -35,7 +35,30 @@
 
 		<div class="main-div">
 
-			
+			<form id="login-form" autocomplete="off">
+				<label for="email"> Email:</label> 
+				<input type="email" placeholder="name@example.com" /></br>
+
+				<input type="submit" value="Log In" />
+			</form>
+
+			<form id="signup-form" autocomplete="off">
+				<label for="email"> Email Address:</label> 
+				<input type="email" name="email" placeholder="name@example.com" /></br>
+
+				<label for="first_name">First Name:</label> 
+				<input type="first_name" name="first_name" placeholder="Jane" /></br>
+
+				<label for="last_name">Last Name:</label> 
+				<input type="last_name" name="last_name" placeholder="Doe" /></br>
+				<input type="submit" value= "Sign Up" />
+			</form>
+
+			<from id="reminder-form" autocomplete="off">
+				<label for="text">Reminder:</label>
+				<input type="text" name="text" placeholder="New Reminder" /> </br>
+				<input type="submit" value="Create" />
+			</form>
 
 			<img class="card-image" src="./assets/occasions/birthday/birthday01.jpg" alt="Birthday Card" />
 			<h3>Send a Card!</h3>
@@ -43,13 +66,13 @@
 			<form id="email-form" autocomplete="off">
 
 				<label for="recipient">Recipient Email: </label>
-				<input type="email" name="recipient" id="recipient" placeholder="name@example.com" /><br>
+				<input type="email" name="recipient" placeholder="name@example.com" /><br>
 
 				<label for="sender">Sender Email: </label>
-				<input type="email" name="sender" id="sender" placeholder="name@example.com" /><br>
+				<input type="email" name="sender" placeholder="name@example.com" /><br>
 
 				<label for="subject">Subject: </label>
-				<input type="text" name="subject" id="subject" placeholder="Happy Birthday Grandma!" /><br>
+				<input type="text" name="subject" placeholder="Happy Birthday Grandma!" /><br>
 
 				<label for="note">Note: </label>
 				<textarea name="note" form="email-form" placeholder="Enter note here..."></textarea><br>
