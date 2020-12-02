@@ -67,6 +67,7 @@ loginForm.addEventListener('submit', event => {
 	console.log(event.target.email.value)
 	userEmail = event.target.email.value
 	fetchGetEmail()
+	event.target.reset()
 })
 
 signupForm.addEventListener('submit', event => {
@@ -360,7 +361,7 @@ function renderLoggedOut() {
 	cardImage.style.display = ''
 	editReminderForm.style.display = 'none'	
 	deleteReminderBtn.style.display = 'none'
-	reminderH3.style.display = 'none'
+	reminderH3Div.style.display = 'none'
 	reminderUl.style.display = 'none'
 	reminderForm.style.display = 'none'
 	editUserBtn.style.display = 'none'
