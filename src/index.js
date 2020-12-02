@@ -133,6 +133,8 @@ emailForm.addEventListener('submit', event => {
 	event.preventDefault()
 	const data = {
 		'user_id': userId,
+		'sender_name': event.target.sender.value,
+		'subject': event.target.subject.value,
 		'recipient_email': event.target.recipient.value,
 		'message': event.target.note.value,
 		'image_url': cardImage.src
@@ -154,12 +156,12 @@ function fetchGetEmail() {
 
 function fetchPostSignUp(data) {
 	fetch('http://localhost:3000/api/v1/users', {
-	  method: 'POST',
-	  headers: {
-	    'Content-Type': 'application/json',
-	  },
-	  body: JSON.stringify(data),
-		})
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data)
@@ -168,17 +170,17 @@ function fetchPostSignUp(data) {
 			userLastName = data.lastName
 			userId = data.id
 			renderSignedUp()
-	})
+		})
 }
 
 function fetchPatchUser(data) {
 	fetch(`http://localhost:3000/api/v1/users/${data.id}`, {
-		  method: 'PATCH',
-		  headers: {
-		    'Content-Type': 'application/json',
-		  },
-		  body: JSON.stringify(data), 
-		})
+		method: 'PATCH',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data);
@@ -186,90 +188,91 @@ function fetchPatchUser(data) {
 			userFirstName = data.firstName
 			userLastName = data.lastName
 			alert("Your user info has been updated successfully!")
-	})
+		})
 }
 
 function fetchDeleteUser(id) {
 	fetch(`http://localhost:3000/api/v1/users/${id}`, {
-	  method: 'DELETE',
-		})
+		method: 'DELETE',
+	})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data)
 			alert("Account Deleted")
 			renderLoggedOut()
-	})
+		})
 }
 
 function fetchPostReminders(data) {
 	fetch('http://localhost:3000/api/v1/reminders', {
-	  method: 'POST',
-	  headers: {
-	    'Content-Type': 'application/json',
-	  },
-	  body: JSON.stringify(data),
-		})
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data)
 			currentUser.reminders.push(data)
 			renderEditUser()
-	})
+		})
 }
 
 function fetchPatchReminder(data) {
 	fetch(`http://localhost:3000/api/v1/reminders/${currentReminder}`, {
-		  method: 'PATCH',
-		  headers: {
-		    'Content-Type': 'application/json',
-		  },
-		  body: JSON.stringify(data), 
-		})
+		method: 'PATCH',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data);
 			document.querySelector(`li[data-id="${currentReminder}"]`).textContent = data.text
-	})
+			currentUser.reminders.find(reminder => reminder.id == currentReminder).text = `${data.text}`
+		})
 }
 
 function fetchDeleteReminder() {
 	fetch(`http://localhost:3000/api/v1/reminders/${currentReminder}`, {
-	  method: 'DELETE',
-		})
+		method: 'DELETE',
+	})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data)
 			document.querySelector(`li[data-id="${currentReminder}"]`).remove()
 			deletedRemindersArray.push(currentUser.reminders.find(reminder => reminder.id == currentReminder))
-	})
+		})
 }
 
 function fetchPostCard(data) {
 	fetch('http://localhost:3000/api/v1/cards', {
-	  method: 'POST',
-	  headers: {
-	    'Content-Type': 'application/json',
-	  },
-	  body: JSON.stringify(data),
-		})
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data)
 			currentUser.cards.push(data)
 			renderEditUser()
-	})
+		})
 }
 
 function fetchDeleteCard(id) {
 	fetch(`http://localhost:3000/api/v1/cards/${id}`, {
-	  method: 'DELETE',
-		})
+		method: 'DELETE',
+	})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data)
 			document.querySelector(`li[data-cardid="${id}"]`).closest('ul').closest('li').remove()
 			deletedCardsArray.push(currentUser.cards.find(card => card.id == id))
-	})
+		})
 }
 
 // RENDERERS
@@ -294,7 +297,7 @@ function renderCardImage(src, alt) {
 	signupForm.style.display = 'none'
 	cardImage.style.display = ''
 	mainDivH1.style.display = ''
-	editReminderForm.style.display = 'none'	
+	editReminderForm.style.display = 'none'
 	deleteReminderBtn.style.display = 'none'
 	reminderH3Div.style.display = 'none'
 	reminderUl.style.display = 'none'
@@ -359,7 +362,7 @@ function renderLoggedOut() {
 	editUserBtn.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
 	cardImage.style.display = ''
-	editReminderForm.style.display = 'none'	
+	editReminderForm.style.display = 'none'
 	deleteReminderBtn.style.display = 'none'
 	reminderH3Div.style.display = 'none'
 	reminderUl.style.display = 'none'
@@ -406,40 +409,40 @@ function renderEditUser() {
 	reminderForm.style.display = ''
 	reminderUl.innerHTML = ''
 	reminderUl.style.display = ''
-	
+
 	if (currentUser.reminders) {
-			reminderH3Div.style.display = ''
-			reminderH3Div.innerHTML = ''
-			const reminderH3 = document.createElement('h3')
-			reminderH3.textContent = "Your Reminders: Click a reminder to edit or delete"
-			reminderH3Div.append(reminderH3)
-			currentUser.reminders.forEach( reminder => {
-				if (!deletedRemindersArray.includes(reminder)) {
+		reminderH3Div.style.display = ''
+		reminderH3Div.innerHTML = ''
+		const reminderH3 = document.createElement('h3')
+		reminderH3.textContent = "Your Reminders: Click a reminder to edit or delete"
+		reminderH3Div.append(reminderH3)
+		currentUser.reminders.forEach(reminder => {
+			if (!deletedRemindersArray.includes(reminder)) {
 				const li = document.createElement("li")
 				li.dataset.id = reminder.id
 				li.textContent = reminder.text
 				reminderUl.append(li)
-				}
+			}
 		})
 	}
 
 	if (currentUser.cards) {
 		cardH3Div.style.display = ''
-			cardH3Div.innerHTML = ''
-			const cardH3 = document.createElement('h3')
-			cardH3.textContent = "Your Sent Cards: Click on a card to delete"
-			cardH3Div.append(cardH3)
+		cardH3Div.innerHTML = ''
+		const cardH3 = document.createElement('h3')
+		cardH3.textContent = "Your Sent Cards: Click on a card to delete"
+		cardH3Div.append(cardH3)
 		cardUl.style.display = ''
-			cardUl.innerHTML = ''
-			currentUser.cards.forEach( card => {
-				if (!deletedCardsArray.includes(card)) {
-					const firstLi = document.createElement("li")
-					const secondUl = document.createElement("ul")
-					const innerLiOne = document.createElement("li")
-					const innerLiTwo = document.createElement("li")
-					const innerLiThree = document.createElement("li")
-						if (card.imageUrl) {
-							innerLiOne.innerHTML = `
+		cardUl.innerHTML = ''
+		currentUser.cards.forEach(card => {
+			if (!deletedCardsArray.includes(card)) {
+				const firstLi = document.createElement("li")
+				const secondUl = document.createElement("ul")
+				const innerLiOne = document.createElement("li")
+				const innerLiTwo = document.createElement("li")
+				const innerLiThree = document.createElement("li")
+				if (card.imageUrl) {
+					innerLiOne.innerHTML = `
 								<div class="container">
 									<img class="image" src=${card.imageUrl} alt="Greeting Card">
 									<div class="middle">
@@ -447,15 +450,15 @@ function renderEditUser() {
 									</div>
 								</div>
 							`
-							innerLiOne.classList.add('cardListImg')
-							innerLiOne.dataset.cardid = card.id
-							innerLiOne.addEventListener ('click', event => {
-								fetchDeleteCard(card.id)
-							})
-							innerLiTwo.textContent = `${card.recipientEmail}`
-							innerLiThree.textContent = `${card.message}`
-						} else if (card.image_url) {
-							innerLiOne.innerHTML = `
+					innerLiOne.classList.add('cardListImg')
+					innerLiOne.dataset.cardid = card.id
+					innerLiOne.addEventListener('click', event => {
+						fetchDeleteCard(card.id)
+					})
+					innerLiTwo.textContent = `${card.recipientEmail}`
+					innerLiThree.textContent = `${card.message}`
+				} else if (card.image_url) {
+					innerLiOne.innerHTML = `
 							<div class="container">
 								<img class="image" src=${card.image_url} alt="Greeting Card">
 								<div class="middle">
@@ -463,21 +466,21 @@ function renderEditUser() {
 								</div>
 							</div>
 							`
-							innerLiOne.classList.add('cardListImg')
-							innerLiOne.dataset.cardid = card.id
-							innerLiOne.addEventListener ('click', event => {
-								fetchDeleteCard(card.id)
-							})
-							innerLiTwo.textContent = `${card.recipient_email}`
-							innerLiThree.textContent = `${card.message}`
-						}
-					secondUl.append(innerLiOne)
-					secondUl.append(innerLiTwo)
-					secondUl.append(innerLiThree)
-					firstLi.append(secondUl)
-					cardUl.append(firstLi)
+					innerLiOne.classList.add('cardListImg')
+					innerLiOne.dataset.cardid = card.id
+					innerLiOne.addEventListener('click', event => {
+						fetchDeleteCard(card.id)
+					})
+					innerLiTwo.textContent = `${card.recipient_email}`
+					innerLiThree.textContent = `${card.message}`
 				}
-			})
+				secondUl.append(innerLiOne)
+				secondUl.append(innerLiTwo)
+				secondUl.append(innerLiThree)
+				firstLi.append(secondUl)
+				cardUl.append(firstLi)
+			}
+		})
 	}
 }
 
