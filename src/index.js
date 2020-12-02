@@ -456,7 +456,14 @@ function renderEditUser() {
 					const innerLiTwo = document.createElement("li")
 					const innerLiThree = document.createElement("li")
 						if (card.imageUrl) {
-							innerLiOne.innerHTML = `<img src=${card.imageUrl} alt="Greeting Card">`
+							innerLiOne.innerHTML = `
+								<div class="container">
+									<img class="image" src=${card.imageUrl} alt="Greeting Card">
+									<div class="middle">
+										<div class="text">Delete</div>
+									</div>
+								</div>
+							`
 							innerLiOne.classList.add('cardListImg')
 							innerLiOne.dataset.cardid = card.id
 							innerLiOne.addEventListener ('click', event => {
@@ -465,7 +472,14 @@ function renderEditUser() {
 							innerLiTwo.textContent = `${card.recipientEmail}`
 							innerLiThree.textContent = `${card.message}`
 						} else if (card.image_url) {
-							innerLiOne.innerHTML = `<img src=${card.image_url} alt="Greeting Card">`
+							innerLiOne.innerHTML = `
+							<div class="container">
+								<img class="image" src=${card.image_url} alt="Greeting Card">
+								<div class="middle">
+									<div class="text">Delete</div>
+								</div>
+							</div>
+							`
 							innerLiOne.classList.add('cardListImg')
 							innerLiOne.dataset.cardid = card.id
 							innerLiOne.addEventListener ('click', event => {
