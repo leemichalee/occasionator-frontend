@@ -137,26 +137,8 @@ emailForm.addEventListener('submit', event => {
 		'image_url': cardImage.src
 	}
 	fetchPostCard(data)
-	// emailGreeting(event.target)
-	// event.target.reset()
+	event.target.reset()
 })
-
-function emailGreeting(formValues) {
-	Email.send({
-		SecureToken: token,
-		To: `${formValues.recipient.value}`,
-		From: `${formValues.sender.value}`,
-		Subject: `${formValues.subject.value}`,
-		Body: `(see attached greeting card) ${formValues.note.value}`,
-			Attachments : [
-				{
-					name : "greetingcard.jpg",
-					path : 'https://static7.depositphotos.com/1266988/778/v/950/depositphotos_7782495-stock-illustration-happy-birthday-with-balloons.jpg'
-				}]
-	}).then(
-		message => alert(message)
-	)
-}
 
 // FETCHERS
 

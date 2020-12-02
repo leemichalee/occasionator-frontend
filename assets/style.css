@@ -86,7 +86,7 @@ textarea {
 	height: 20%;
 }
 
-/* HOVER */
+/* CARD IMAGE HOVER */
 
 .container {
 	position: relative;
@@ -127,3 +127,5 @@ textarea {
   font-size: 16px;
   padding: 16px 32px;
 }
+
+/* CARD IMAGE HOVER END */
