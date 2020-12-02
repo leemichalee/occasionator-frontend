@@ -126,6 +126,25 @@ deleteReminderBtn.addEventListener('click', event => {
 	fetchDeleteReminder()
 })
 
+emailForm.addEventListener('submit', event => {
+	event.preventDefault()
+	Email.send({
+		SecureToken: token,
+		To: `${event.target.recipient.value}`,
+		From: `${event.target.sender.value}`,
+		Subject: `${event.target.subject.value}`,
+		Body: `(see attached greeting card) ${event.target.note.value}`,
+			Attachments : [
+				{
+					name : "greetingcard.jpg",
+					path : 'https://static7.depositphotos.com/1266988/778/v/950/depositphotos_7782495-stock-illustration-happy-birthday-with-balloons.jpg'
+				}]
+	}).then(
+		message => alert(message)
+	)
+	// event.target.reset()
+})
+
 // FETCHERS
 
 function fetchGetEmail() {
