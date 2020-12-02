@@ -77,6 +77,10 @@ textarea {
 	width: 300px;
 }
 
+#reminderUl {
+	cursor: pointer;
+}
+
 #cardUl img {
 	width: 20%;
 	height: 20%;

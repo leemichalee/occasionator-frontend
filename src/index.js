@@ -5,6 +5,7 @@ let userFirstName;
 let userLastName;
 let userId;
 let currentUser;
+let currentReminder;
 
 // DOM ELEMENTS
 
@@ -27,6 +28,10 @@ const mainDiv = document.querySelector('.main-div')
 const reminderForm = document.querySelector('#reminder-form')
 const reminderUl = document.querySelector('#reminderUl')
 const cardUl = document.querySelector('#cardUl')
+const reminderPDiv = document.querySelector('#reminderPDiv')
+const editReminderForm = document.querySelector('#editReminderForm')
+const deleteReminderBtn = document.querySelector('#deleteReminderBtn')
+
 
 // EVENT HANDLERS
 
@@ -98,6 +103,27 @@ mainDiv.addEventListener('click', event => {
 		console.log(event.target)
 		fetchDeleteUser(userId)
 	}
+})
+
+reminderUl.addEventListener('click', event => {
+	if (event.target.matches('li')) {
+		currentReminder = event.target.dataset.id
+		editReminderForm.text.value = event.target.textContent
+		renderReminderOptions()
+	}
+})
+
+editReminderForm.addEventListener('submit', event => {
+	event.preventDefault()
+	data = {
+		"text": event.target.text.value
+	}
+	fetchPatchReminder(data)
+	event.target.reset()
+})
+
+deleteReminderBtn.addEventListener('click', event => {
+	fetchDeleteReminder()
 })
 
 // FETCHERS
@@ -176,6 +202,32 @@ function fetchPostReminders(data) {
 	})
 }
 
+function fetchPatchReminder(data) {
+	fetch(`http://localhost:3000/api/v1/reminders/${currentReminder}`, {
+		  method: 'PATCH',
+		  headers: {
+		    'Content-Type': 'application/json',
+		  },
+		  body: JSON.stringify(data), 
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data);
+			document.querySelector(`li[data-id="${currentReminder}"]`).textContent = data.text
+	})
+}
+
+function fetchDeleteReminder() {
+	fetch(`http://localhost:3000/api/v1/reminders/${currentReminder}`, {
+	  method: 'DELETE',
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data)
+			document.querySelector(`li[data-id="${currentReminder}"]`).remove()
+	})
+}
+
 // RENDERERS
 
 function renderOccasion(occasion) {
@@ -198,6 +250,14 @@ function renderCardImage(src, alt) {
 	signupForm.style.display = 'none'
 	cardImage.style.display = ''
 	mainDivH1.style.display = ''
+	editReminderForm.style.display = 'none'	
+	deleteReminderBtn.style.display = 'none'
+	reminderPDiv.style.display = 'none'
+	reminderUl.style.display = 'none'
+	reminderForm.style.display = 'none'
+	deleteUserBtn.style.display = 'none'
+	cardUl.style.display = 'none'
+	editUserForm.style.display = 'none'
 	if (userEmail) {
 		emailForm.style.display = ''
 		mainDivH3.style.display = 'none'
@@ -254,6 +314,14 @@ function renderLoggedOut() {
 	editUserBtn.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
 	cardImage.style.display = ''
+	editReminderForm.style.display = 'none'	
+	deleteReminderBtn.style.display = 'none'
+	reminderPDiv.style.display = 'none'
+	reminderUl.style.display = 'none'
+	reminderForm.style.display = 'none'
+	editUserBtn.style.display = 'none'
+	deleteUserBtn.style.display = 'none'
+	cardUl.style.display = 'none'
 	userEmail = ''
 	userFirstName = ''
 	userLastName = ''
@@ -292,11 +360,18 @@ function renderEditUser() {
 	reminderForm.style.display = ''
 	reminderUl.innerHTML = ''
 	reminderUl.style.display = ''
+	
 	if (currentUser.reminders) {
+			reminderPDiv.style.display = ''
+			reminderPDiv.innerHTML = ''
+			const reminderP = document.createElement('p')
+			reminderP.textContent = "Your Reminders: Click a reminder to edit or delete"
+			reminderPDiv.append(reminderP)
 			currentUser.reminders.forEach( reminder => {
-			const li = document.createElement("li")
-			li.textContent = reminder.text
-			reminderUl.append(li)
+				const li = document.createElement("li")
+				li.dataset.id = reminder.id
+				li.textContent = reminder.text
+				reminderUl.append(li)
 		})
 	}
 
@@ -318,4 +393,9 @@ function renderEditUser() {
 			cardUl.append(firstLi)
 		})
 	}
+}
+
+function renderReminderOptions() {
+	editReminderForm.style.display = ''
+	deleteReminderBtn.style.display = ''
 }
