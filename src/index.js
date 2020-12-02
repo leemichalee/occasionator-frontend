@@ -26,6 +26,7 @@ const deleteUserBtn = document.querySelector('#deleteUserBtn')
 const mainDiv = document.querySelector('.main-div')
 const reminderForm = document.querySelector('#reminder-form')
 const reminderUl = document.querySelector('#reminderUl')
+const cardUl = document.querySelector('#cardUl')
 
 // EVENT HANDLERS
 
@@ -89,6 +90,7 @@ reminderForm.addEventListener('submit', event => {
 		user_id: parseInt(userId)
 	}
 	fetchPostReminders(data)
+	event.target.reset()
 })
 
 mainDiv.addEventListener('click', event => {
@@ -295,6 +297,25 @@ function renderEditUser() {
 			const li = document.createElement("li")
 			li.textContent = reminder.text
 			reminderUl.append(li)
+		})
+	}
+
+	if (currentUser.cards) {
+		cardUl.style.display = ''
+			currentUser.cards.forEach( card => {
+			const firstLi = document.createElement("li")
+			const secondUl = document.createElement("ul")
+			const innerLiOne = document.createElement("li")
+			const innerLiTwo = document.createElement("li")
+			const innerLiThree = document.createElement("li")
+			innerLiOne.innerHTML = `<img src=${card.imageUrl} alt="Greeting Card">`
+			innerLiTwo.textContent = `${card.recipientEmail}`
+			innerLiThree.textContent = `${card.message}`
+			secondUl.append(innerLiOne)
+			secondUl.append(innerLiTwo)
+			secondUl.append(innerLiThree)
+			firstLi.append(secondUl)
+			cardUl.append(firstLi)
 		})
 	}
 }
