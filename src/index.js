@@ -28,10 +28,10 @@ const mainDiv = document.querySelector('.main-div')
 const reminderForm = document.querySelector('#reminder-form')
 const reminderUl = document.querySelector('#reminderUl')
 const cardUl = document.querySelector('#cardUl')
-const reminderPDiv = document.querySelector('#reminderPDiv')
+const reminderH3Div = document.querySelector('#reminderH3Div')
 const editReminderForm = document.querySelector('#editReminderForm')
 const deleteReminderBtn = document.querySelector('#deleteReminderBtn')
-
+const cardH3Div = document.querySelector('#cardH3Div')
 
 // EVENT HANDLERS
 
@@ -128,12 +128,24 @@ deleteReminderBtn.addEventListener('click', event => {
 
 emailForm.addEventListener('submit', event => {
 	event.preventDefault()
+	const data = {
+		'user_id': userId,
+		'recipient_email': event.target.recipient.value,
+		'message': event.target.note.value,
+		'image_url': cardImage.src
+	}
+	fetchPostCard(data)
+	// emailGreeting(event.target)
+	// event.target.reset()
+})
+
+function emailGreeting(formValues) {
 	Email.send({
 		SecureToken: token,
-		To: `${event.target.recipient.value}`,
-		From: `${event.target.sender.value}`,
-		Subject: `${event.target.subject.value}`,
-		Body: `(see attached greeting card) ${event.target.note.value}`,
+		To: `${formValues.recipient.value}`,
+		From: `${formValues.sender.value}`,
+		Subject: `${formValues.subject.value}`,
+		Body: `(see attached greeting card) ${formValues.note.value}`,
 			Attachments : [
 				{
 					name : "greetingcard.jpg",
@@ -142,8 +154,7 @@ emailForm.addEventListener('submit', event => {
 	}).then(
 		message => alert(message)
 	)
-	// event.target.reset()
-})
+}
 
 // FETCHERS
 
@@ -247,6 +258,22 @@ function fetchDeleteReminder() {
 	})
 }
 
+function fetchPostCard(data) {
+	fetch('http://localhost:3000/api/v1/cards', {
+	  method: 'POST',
+	  headers: {
+	    'Content-Type': 'application/json',
+	  },
+	  body: JSON.stringify(data),
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data)
+			currentUser.cards.push(data)
+			renderEditUser()
+	})
+}
+
 // RENDERERS
 
 function renderOccasion(occasion) {
@@ -271,12 +298,13 @@ function renderCardImage(src, alt) {
 	mainDivH1.style.display = ''
 	editReminderForm.style.display = 'none'	
 	deleteReminderBtn.style.display = 'none'
-	reminderPDiv.style.display = 'none'
+	reminderH3Div.style.display = 'none'
 	reminderUl.style.display = 'none'
 	reminderForm.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
 	cardUl.style.display = 'none'
 	editUserForm.style.display = 'none'
+	cardH3Div.style.display = 'none'
 	if (userEmail) {
 		emailForm.style.display = ''
 		mainDivH3.style.display = 'none'
@@ -335,7 +363,7 @@ function renderLoggedOut() {
 	cardImage.style.display = ''
 	editReminderForm.style.display = 'none'	
 	deleteReminderBtn.style.display = 'none'
-	reminderPDiv.style.display = 'none'
+	reminderH3.style.display = 'none'
 	reminderUl.style.display = 'none'
 	reminderForm.style.display = 'none'
 	editUserBtn.style.display = 'none'
@@ -346,6 +374,7 @@ function renderLoggedOut() {
 	userLastName = ''
 	userId = ''
 	currentUser = ''
+	cardH3Div.style.display = 'none'
 }
 
 function renderSignUp() {
@@ -381,11 +410,11 @@ function renderEditUser() {
 	reminderUl.style.display = ''
 	
 	if (currentUser.reminders) {
-			reminderPDiv.style.display = ''
-			reminderPDiv.innerHTML = ''
-			const reminderP = document.createElement('p')
-			reminderP.textContent = "Your Reminders: Click a reminder to edit or delete"
-			reminderPDiv.append(reminderP)
+			reminderH3Div.style.display = ''
+			reminderH3Div.innerHTML = ''
+			const reminderH3 = document.createElement('h3')
+			reminderH3.textContent = "Your Reminders: Click a reminder to edit or delete"
+			reminderH3Div.append(reminderH3)
 			currentUser.reminders.forEach( reminder => {
 				const li = document.createElement("li")
 				li.dataset.id = reminder.id
@@ -395,16 +424,28 @@ function renderEditUser() {
 	}
 
 	if (currentUser.cards) {
+		cardH3Div.style.display = ''
+			cardH3Div.innerHTML = ''
+			const cardH3 = document.createElement('h3')
+			cardH3.textContent = "Your Sent Cards: Click on a card to delete"
+			cardH3Div.append(cardH3)
 		cardUl.style.display = ''
+			cardUl.innerHTML = ''
 			currentUser.cards.forEach( card => {
 			const firstLi = document.createElement("li")
 			const secondUl = document.createElement("ul")
 			const innerLiOne = document.createElement("li")
 			const innerLiTwo = document.createElement("li")
 			const innerLiThree = document.createElement("li")
-			innerLiOne.innerHTML = `<img src=${card.imageUrl} alt="Greeting Card">`
-			innerLiTwo.textContent = `${card.recipientEmail}`
-			innerLiThree.textContent = `${card.message}`
+				if (card.imageUrl) {
+					innerLiOne.innerHTML = `<img src=${card.imageUrl} alt="Greeting Card">`
+					innerLiTwo.textContent = `${card.recipientEmail}`
+					innerLiThree.textContent = `${card.message}`
+				} else if (card.image_url) {
+					innerLiOne.innerHTML = `<img src=${card.image_url} alt="Greeting Card">`
+					innerLiTwo.textContent = `${card.recipient_email}`
+					innerLiThree.textContent = `${card.message}`
+				}
 			secondUl.append(innerLiOne)
 			secondUl.append(innerLiTwo)
 			secondUl.append(innerLiThree)
