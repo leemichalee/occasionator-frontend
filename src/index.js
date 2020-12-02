@@ -6,6 +6,8 @@ let userLastName;
 let userId;
 let currentUser;
 let currentReminder;
+let deletedRemindersArray = []
+let deletedCardsArray = []
 
 // DOM ELEMENTS
 
@@ -255,6 +257,7 @@ function fetchDeleteReminder() {
 		.then(data => {
 			console.log('Success:', data)
 			document.querySelector(`li[data-id="${currentReminder}"]`).remove()
+			deletedRemindersArray.push(currentUser.reminders.find(reminder => reminder.id == currentReminder))
 	})
 }
 
@@ -271,6 +274,18 @@ function fetchPostCard(data) {
 			console.log('Success:', data)
 			currentUser.cards.push(data)
 			renderEditUser()
+	})
+}
+
+function fetchDeleteCard(id) {
+	fetch(`http://localhost:3000/api/v1/cards/${id}`, {
+	  method: 'DELETE',
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data)
+			document.querySelector(`li[data-cardid="${id}"]`).closest('ul').closest('li').remove()
+			deletedCardsArray.push(currentUser.cards.find(card => card.id == id))
 	})
 }
 
@@ -416,10 +431,12 @@ function renderEditUser() {
 			reminderH3.textContent = "Your Reminders: Click a reminder to edit or delete"
 			reminderH3Div.append(reminderH3)
 			currentUser.reminders.forEach( reminder => {
+				if (!deletedRemindersArray.includes(reminder)) {
 				const li = document.createElement("li")
 				li.dataset.id = reminder.id
 				li.textContent = reminder.text
 				reminderUl.append(li)
+				}
 		})
 	}
 
@@ -432,26 +449,38 @@ function renderEditUser() {
 		cardUl.style.display = ''
 			cardUl.innerHTML = ''
 			currentUser.cards.forEach( card => {
-			const firstLi = document.createElement("li")
-			const secondUl = document.createElement("ul")
-			const innerLiOne = document.createElement("li")
-			const innerLiTwo = document.createElement("li")
-			const innerLiThree = document.createElement("li")
-				if (card.imageUrl) {
-					innerLiOne.innerHTML = `<img src=${card.imageUrl} alt="Greeting Card">`
-					innerLiTwo.textContent = `${card.recipientEmail}`
-					innerLiThree.textContent = `${card.message}`
-				} else if (card.image_url) {
-					innerLiOne.innerHTML = `<img src=${card.image_url} alt="Greeting Card">`
-					innerLiTwo.textContent = `${card.recipient_email}`
-					innerLiThree.textContent = `${card.message}`
+				if (!deletedCardsArray.includes(card)) {
+					const firstLi = document.createElement("li")
+					const secondUl = document.createElement("ul")
+					const innerLiOne = document.createElement("li")
+					const innerLiTwo = document.createElement("li")
+					const innerLiThree = document.createElement("li")
+						if (card.imageUrl) {
+							innerLiOne.innerHTML = `<img src=${card.imageUrl} alt="Greeting Card">`
+							innerLiOne.classList.add('cardListImg')
+							innerLiOne.dataset.cardid = card.id
+							innerLiOne.addEventListener ('click', event => {
+								fetchDeleteCard(card.id)
+							})
+							innerLiTwo.textContent = `${card.recipientEmail}`
+							innerLiThree.textContent = `${card.message}`
+						} else if (card.image_url) {
+							innerLiOne.innerHTML = `<img src=${card.image_url} alt="Greeting Card">`
+							innerLiOne.classList.add('cardListImg')
+							innerLiOne.dataset.cardid = card.id
+							innerLiOne.addEventListener ('click', event => {
+								fetchDeleteCard(card.id)
+							})
+							innerLiTwo.textContent = `${card.recipient_email}`
+							innerLiThree.textContent = `${card.message}`
+						}
+					secondUl.append(innerLiOne)
+					secondUl.append(innerLiTwo)
+					secondUl.append(innerLiThree)
+					firstLi.append(secondUl)
+					cardUl.append(firstLi)
 				}
-			secondUl.append(innerLiOne)
-			secondUl.append(innerLiTwo)
-			secondUl.append(innerLiThree)
-			firstLi.append(secondUl)
-			cardUl.append(firstLi)
-		})
+			})
 	}
 }
 
