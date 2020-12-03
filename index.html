@@ -7,6 +7,12 @@
 	<title>Occasionator</title>
 	<link rel="stylesheet" type="text/css" href="./assets/style.css" />
 	<script defer type="text/javascript" src="./src/index.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+	<script type="text/javascript">
+		(function() {
+		emailjs.init("user_YURUYwTaCWnST7CBoFniH");
+		})();
+	</script>
 </head>
 
 <body>
@@ -21,6 +27,7 @@
 			<button id="logoutBtn" style="display:none">Logout</button>
 			<button id="editUserBtn" style="display:none">Edit User</button>
 			<select name="occasion" id="occasion-select">
+<<<<<<< HEAD
 				<option value="">Occasion</option>
     		<option value="birthday">Birthday</option>
     		<option value="christmas">Christmas</option>
@@ -29,51 +36,61 @@
     		<option value="holidays">Happy Holidays</option>
     		<option value="mothers">Mother's Day</option>
     		<option value="valentines">Valentine's Day</option>
+=======
+				<option value="">-Please choose an occasion-</option>
+				<option value="birthday">Birthday</option>
+				<option value="christmas">Christmas</option>
+				<option value="fathers">Father's Day</option>
+				<option value="hanukkah">Hanukkah</option>
+				<option value="holidays">Happy Holidays</option>
+				<option value="mothers">Mother's Day</option>
+				<option value="valentines">Valentine's Day</option>
+>>>>>>> master
 			</select>
 		</div>
 
 		<div class="card-div">
-			<img src="./assets/occasions/birthday/birthday01.jpg" alt="Birthday Card" />
-			<img src="./assets/occasions/birthday/birthday02.jpg" alt="Birthday Card" />
-			<img src="./assets/occasions/birthday/birthday03.jpg" alt="Birthday Card" />
-			<img src="./assets/occasions/birthday/birthday04.jpg" alt="Birthday Card" />
-			<img src="./assets/occasions/birthday/birthday05.jpg" alt="Birthday Card" />
-			<img src="./assets/occasions/birthday/birthday06.jpg" alt="Birthday Card" />
-			<img src="./assets/occasions/birthday/birthday07.jpg" alt="Birthday Card" />
-			<img src="./assets/occasions/birthday/birthday08.jpg" alt="Birthday Card" />
+			<img src="https://i.ibb.co/6Z9sZdd/birthday01.jpg" alt="birthday01">
+			<img src="https://i.ibb.co/cNx9R4V/birthday02.jpg" alt="birthday02">
+			<img src="https://i.ibb.co/F8YcLvq/birthday03.jpg" alt="birthday03">
+			<img src="https://i.ibb.co/kqk1CR9/birthday04.jpg" alt="birthday04">
+			<img src="https://i.ibb.co/BKz2rZZ/birthday05.jpg" alt="birthday05">
+			<img src="https://i.ibb.co/1QZFjbd/birthday06.jpg" alt="birthday06">
+			<img src="https://i.ibb.co/Zfdd9wV/birthday07.jpg" alt="birthday07">
+			<img src="https://i.ibb.co/xmcXw65/birthday08.jpg" alt="birthday08">
 		</div>
 
 		<div class="main-div">
 
 			<form id="login-form" autocomplete="off" style="display:none">
-				<label for="email"> Email:</label> 
+				<label for="email"> Email:</label>
 				<input type="email" name="email" placeholder="name@example.com" /></br>
 
 				<input type="submit" value="Log In" />
 			</form>
 
 			<form id="signup-form" autocomplete="off" style="display:none">
-				<label for="email"> Email Address:</label> 
+				<label for="email"> Email Address:</label>
 				<input type="email" name="email" placeholder="name@example.com" /></br>
 
-				<label for="first_name">First Name:</label> 
+				<label for="first_name">First Name:</label>
 				<input type="first_name" name="first_name" placeholder="Jane" /></br>
 
-				<label for="last_name">Last Name:</label> 
+				<label for="last_name">Last Name:</label>
 				<input type="last_name" name="last_name" placeholder="Doe" /></br>
-				<input type="submit" value= "Sign Up" />
+				<input type="submit" value="Sign Up" />
 			</form>
 
 			<form id="edit-user-form" autocomplete="off" style="display:none">
-				<label for="email"> Email Address:</label> 
+				<label for="email"> Email Address:</label>
 				<input type="email" name="email" placeholder="name@example.com" /></br>
 
-				<label for="first_name">First Name:</label> 
+				<label for="first_name">First Name:</label>
 				<input type="first_name" name="first_name" placeholder="Jane" /></br>
 
-				<label for="last_name">Last Name:</label> 
+				<label for="last_name">Last Name:</label>
 				<input type="last_name" name="last_name" placeholder="Doe" /></br>
-				<input type="submit" value= "Save User Changes" />
+				<input type="submit" value="Save User Changes" />
 			</form>
 			<button id='deleteUserBtn' style="display:none">Delete Account</button>
 
@@ -85,8 +102,8 @@
 
 			<br>
 
-			<img id="card-image" src="./assets/occasions/birthday/birthday01.jpg" alt="Birthday Card" />
-			
+			<img id="card-image" src="https://i.ibb.co/6Z9sZdd/birthday01.jpg" alt="Birthday Card" />
+
 			<br>
 
 			<h1 id="mainDivH1">Send a Card!</h1>
@@ -97,6 +114,9 @@
 
 				<label for="recipient">Recipient Email: </label>
 				<input type="email" name="recipient" placeholder="name@example.com" /><br>
+
+				<label for="sender_email">Sender Email: </label>
+				<input type="email" name="sender_email" placeholder="name@example.com" /><br>
 
 				<label for="sender">Sender Name: </label>
 				<input type="text" name="sender" placeholder="John Doe" /><br>
@@ -116,8 +136,8 @@
 
 			<form id='editReminderForm' autocomplete="off" style="display:none">
 				<label for="text">Reminder:</label>
-				<input type="text" name="text"/> </br>
-				<input type="submit" value="Update Reminder"/>
+				<input type="text" name="text" /> </br>
+				<input type="submit" value="Update Reminder" />
 			</form>
 			<button id="deleteReminderBtn" style="display:none">Delete Reminder</button>
 
