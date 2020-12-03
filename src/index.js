@@ -269,7 +269,8 @@ function emailCard(data) {
 		senderName: `${data.sender_name}`,
 		message: `${data.message}`,
 		subject: `${data.subject}`,
-		recipientEmail: `${data.recipient_email}`
+		recipientEmail: `${data.recipient_email}`,
+		greetingCard: `${data.image_url}`
 	};
 	emailjs.send('service_rjoa90u', 'template_n1vmcb1', templateParams)
 		.then(function (response) {
