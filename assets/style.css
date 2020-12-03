@@ -5,6 +5,7 @@
 
 body {
 	margin: 0px;
+	height:100%;
 }
 .parent {
 	display: grid;
@@ -74,14 +75,13 @@ body {
 .card-div {
 	display: flex;
 	overflow-x: auto;
-	background-color: #ff70a6;
+	background-color: white;
 }
 
 .card-div img {
-	height: 210px;
+	height: 150px;
 	padding-top: 10px;
 	padding-right: 10px;
-	padding-bottom: 10px;
 	cursor: pointer;
 }
 
@@ -89,15 +89,19 @@ body {
   padding-left: 10px;
 }
 
+.card-div img:hover {
+	opacity: 0.7;
+}
+
 .main-div {
-	display: flex;
 	flex-direction: column;
 	background-color: white;
 	padding-left: 10px;
 }
 
 .main-div img {
-	height: 350px;
+	width: 50%;
+	float:left;
 }
 
 textarea {
@@ -154,6 +158,84 @@ textarea {
   color: white;
   font-size: 16px;
   padding: 16px 32px;
+}
+
+#copyright {
+	position: absolute;
+	bottom: 0;
+	margin: 10px;
+}
+
+.form-css {
+	margin-left: 50%;
+	padding-left: 20px;
+}
+
+#login-form {
+	text-align: center;
+}
+
+input[type='submit'] {
+	background-color: #ff70a6;
+	border: none;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+input:hover[type='submit']  {
+	background-color: #ffbdd6;
+	color: white;
+  }
+
+.email-textbox {
+	float: right;
+}
+
+#signup-form, #edit-user-form, #reminder-form, #reminderH3Div, #editReminderForm{
+	text-align: center;
+}
+
+#reminderUl {
+	margin-left: 40%;
+	list-style-type: none;
+}
+
+
+#deleteUserBtn {
+	background-color: #ff70a6;
+	border: none;
+	color: #c41e3a;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	cursor: pointer;
+}
+#deleteUserBtn:hover {
+	background-color: #c41e3a;
+	color: white;
+}
+
+#deleteReminderBtn {
+	background-color: #ff70a6;
+	border: none;
+	color: #c41e3a;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	cursor: pointer;
+}
+#deleteReminderBtn:hover {
+	background-color: #c41e3a;
+	color: white;
 }
 
 

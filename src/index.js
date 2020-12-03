@@ -34,6 +34,7 @@ const reminderH3Div = document.querySelector('#reminderH3Div')
 const editReminderForm = document.querySelector('#editReminderForm')
 const deleteReminderBtn = document.querySelector('#deleteReminderBtn')
 const cardH3Div = document.querySelector('#cardH3Div')
+const hr = document.querySelector('#seperator')
 
 // EVENT HANDLERS
 
@@ -389,6 +390,7 @@ function renderCardImage(src, alt) {
 	deleteReminderBtn.style.display = 'none'
 	reminderH3Div.style.display = 'none'
 	reminderUl.style.display = 'none'
+	hr.style.display = 'none'
 	reminderForm.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
 	cardUl.style.display = 'none'
@@ -433,7 +435,7 @@ function renderLoggedIn(usersArray) {
 	} else {
 		const p = document.createElement("p")
 		p.style.color = "red"
-		p.textContent = "Email does not match an existing account. Please try again or sign up."
+		p.textContent = "Invalid Email Address"
 		loginForm.append(p)
 		userEmail = ''
 	}
@@ -454,6 +456,7 @@ function renderLoggedOut() {
 	deleteReminderBtn.style.display = 'none'
 	reminderH3Div.style.display = 'none'
 	reminderUl.style.display = 'none'
+	hr.style.display = 'none'
 	reminderForm.style.display = 'none'
 	editUserBtn.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
@@ -497,6 +500,7 @@ function renderEditUser() {
 	reminderForm.style.display = ''
 	reminderUl.innerHTML = ''
 	reminderUl.style.display = ''
+	hr.style.display = ''
 
 	if (currentUser.reminders) {
 		reminderH3Div.style.display = ''

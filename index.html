@@ -27,17 +27,7 @@
 			<button id="logoutBtn" style="display:none">Logout</button>
 			<button id="editUserBtn" style="display:none">Edit User</button>
 			<select name="occasion" id="occasion-select">
-<<<<<<< HEAD
 				<option value="">Occasion</option>
-    		<option value="birthday">Birthday</option>
-    		<option value="christmas">Christmas</option>
-    		<option value="fathers">Father's Day</option>
-    		<option value="hanukkah">Hanukkah</option>
-    		<option value="holidays">Happy Holidays</option>
-    		<option value="mothers">Mother's Day</option>
-    		<option value="valentines">Valentine's Day</option>
-=======
-				<option value="">-Please choose an occasion-</option>
 				<option value="birthday">Birthday</option>
 				<option value="christmas">Christmas</option>
 				<option value="fathers">Father's Day</option>
@@ -45,7 +35,6 @@
 				<option value="holidays">Happy Holidays</option>
 				<option value="mothers">Mother's Day</option>
 				<option value="valentines">Valentine's Day</option>
->>>>>>> master
 			</select>
 		</div>
 
@@ -61,94 +50,132 @@
 		</div>
 
 		<div class="main-div">
-
+			
 			<form id="login-form" autocomplete="off" style="display:none">
-				<label for="email"> Email:</label>
-				<input type="email" name="email" placeholder="name@example.com" /></br>
-
+				<table style="width:25%; margin-left: auto;margin-right: auto">
+				<tr>
+				<td><label for="email"> Email</label></td>
+				<td><input type="email" name="email" placeholder="name@example.com" /></td>
+				</tr>
+				</table><br>
 				<input type="submit" value="Log In" />
 			</form>
 
 			<form id="signup-form" autocomplete="off" style="display:none">
-				<label for="email"> Email Address:</label>
-				<input type="email" name="email" placeholder="name@example.com" /></br>
-
-				<label for="first_name">First Name:</label>
-				<input type="first_name" name="first_name" placeholder="Jane" /></br>
-
-				<label for="last_name">Last Name:</label>
-				<input type="last_name" name="last_name" placeholder="Doe" /></br>
+				<table style="width:25%; margin-left: auto;margin-right: auto">
+				<tr>
+				<td><label for="email"> Email</label></td>
+				<td><input type="email" name="email" placeholder="name@example.com" /></td>
+				</tr>
+				<tr>
+				<td><label for="first_name">First Name</label></td>
+				<td><input type="first_name" name="first_name" placeholder="Jane" /></td>
+				</tr>
+				<tr>
+				<td><label for="last_name">Last Name</label></td>
+				<td><input type="last_name" name="last_name" placeholder="Doe" /></td>
+				</tr>
+				</table><br>
 				<input type="submit" value="Sign Up" />
 			</form>
 
 			<form id="edit-user-form" autocomplete="off" style="display:none">
-				<label for="email"> Email Address:</label>
-				<input type="email" name="email" placeholder="name@example.com" /></br>
-
-				<label for="first_name">First Name:</label>
-				<input type="first_name" name="first_name" placeholder="Jane" /></br>
-
-				<label for="last_name">Last Name:</label>
-				<input type="last_name" name="last_name" placeholder="Doe" /></br>
+				<table style="width:30%; margin-left: auto;margin-right: auto">
+				<tr>
+				<td><label for="email"> Email Address:</label></td>
+				<td><input type="email" name="email" placeholder="name@example.com" /></td>
+				</tr>
+				<tr>
+				<td><label for="first_name">First Name:</label></td>
+				<td><input type="first_name" name="first_name" placeholder="Jane" /></td>
+				</tr>
+				<tr>
+				<td><label for="last_name">Last Name:</label></td>
+				<td><input type="last_name" name="last_name" placeholder="Doe" /></td>
+				</tr>
+				</table><br>
 				<input type="submit" value="Save User Changes" />
 			</form>
-			<button id='deleteUserBtn' style="display:none">Delete Account</button>
+			<button id='deleteUserBtn' style="display:none">Delete Account</button><br>
 
-			<form id="reminder-form" autocomplete="off" style="display:none">
-				<label for="text">Reminder:</label>
-				<input type="text" name="text" placeholder="New Reminder" /> </br>
-				<input type="submit" value="Create" />
-			</form>
-
-			<br>
-
-			<img id="card-image" src="https://i.ibb.co/6Z9sZdd/birthday01.jpg" alt="Birthday Card" />
-
-			<br>
-
-			<h1 id="mainDivH1">Send a Card!</h1>
-
-			<h3 id="mainDivH3">Please Log In to Send a Card</h3>
-
-			<form id="email-form" autocomplete="off" style="display:none">
-
-				<label for="recipient">Recipient Email: </label>
-				<input type="email" name="recipient" placeholder="name@example.com" /><br>
-
-				<label for="sender_email">Sender Email: </label>
-				<input type="email" name="sender_email" placeholder="name@example.com" /><br>
-
-				<label for="sender">Sender Name: </label>
-				<input type="text" name="sender" placeholder="John Doe" /><br>
-
-				<label for="subject">Subject: </label>
-				<input type="text" name="subject" placeholder="Happy Birthday Grandma!" /><br>
-
-				<label for="note">Note: </label>
-				<textarea name="note" form="email-form" placeholder="Enter note here..."></textarea><br>
-
-				<input type="submit" value="Send" />
-			</form>
+			<hr id='seperator' style='display:none'>
 
 			<div id="reminderH3Div" style="display:none"></div>
 			<ul id="reminderUl" style="display:none">
 			</ul>
 
+			<form id="reminder-form" autocomplete="off" style="display:none">
+				<table style="width:30%; margin-left: auto;margin-right: auto">
+				<tr>
+				<td><label for="text">Reminder:</label></td>
+				<td><input type="text" name="text" placeholder="New Reminder" /></td>
+				</tr>
+				</table>
+				<input type="submit" value="Create" />
+			</form>
+
 			<form id='editReminderForm' autocomplete="off" style="display:none">
-				<label for="text">Reminder:</label>
-				<input type="text" name="text" /> </br>
+				<table style="width:30%; margin-left: auto;margin-right: auto">
+				<tr>
+				<td><label for="text">Reminder:</label></td>
+				<td><input type="text" name="text" /> </td>
+				</tr>
+				</table>
 				<input type="submit" value="Update Reminder" />
 			</form>
 			<button id="deleteReminderBtn" style="display:none">Delete Reminder</button>
 
+			<hr id='seperator' style='display:none'>
+			
+			<img id="card-image" src="https://i.ibb.co/6Z9sZdd/birthday01.jpg" alt="Birthday Card" />
+
+			<div class='form-css'>
+			<h1 id="mainDivH1">Send a Card!</h1>
+
+			<h3 id="mainDivH3">Please Log In to Send a Card</h3>
+
+			<form id="email-form" autocomplete="off" style="display:none">
+				<table style="width:100%">
+				<tr>
+				<td><label for="recipient">Recipient Email: </label></td>
+				<td><input type="email" name="recipient" placeholder="name@example.com" /></td>
+				</tr>
+				<tr>
+				<td><label for="sender_email">Sender Email: </label></td>
+				<td><input type="email" name="sender_email" placeholder="name@example.com" /></td>
+				</tr>
+				<tr>
+				<td><label for="sender">Sender Name: </label></td>
+				<td><input type="text" name="sender" placeholder="John Doe" /></td>
+				</tr>
+				<tr>
+				<td><label for="subject">Subject: </label></td>
+				<td><input type="text" name="subject" placeholder="Happy Birthday Grandma!" /></td>
+				</tr>
+				<tr>
+				<td><label for="note">Note: </label></td>
+				<td><textarea name="note" form="email-form" placeholder="Enter note here..."></textarea></td>
+				</tr>
+				</table>
+				<input style='float:right; margin-right:50%' type="submit" value="Send" />
+			</form>
+		</div>
+
+
+
+			
+
 			<div id="cardH3Div" style="display:none"></div>
 			<ul id='cardUl' style='display:none'>
 			</ul>
-
-			<p id="copyright">Occasionator Copyright (c) 2020. A Lee Michaeli & Roman Tetelbaum Project</p>
+			<footer id="copyright">
+				Occasionator Copyright (c) 2020. A Lee Michaeli & Roman Tetelbaum Project
+			</footer>
+			
 		</div>
 
 	</div>
+
 
 </body>
 
