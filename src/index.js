@@ -136,6 +136,7 @@ emailForm.addEventListener('submit', event => {
 		'sender_name': event.target.sender.value,
 		'subject': event.target.subject.value,
 		'recipient_email': event.target.recipient.value,
+		'sender_email': event.target.sender_email.value,
 		'message': event.target.note.value,
 		'image_url': cardImage.src
 	}
@@ -270,11 +271,13 @@ function emailCard(data) {
 		message: `${data.message}`,
 		subject: `${data.subject}`,
 		recipientEmail: `${data.recipient_email}`,
+		senderEmail: `${data.sender_email}`,
 		greetingCard: `${data.image_url}`
 	};
 	emailjs.send('service_rjoa90u', 'template_n1vmcb1', templateParams)
 		.then(function (response) {
 			console.log('SUCCESS!', response.status, response.text);
+			alert("Email Greeting Sent!")
 		}, function (error) {
 			console.log('FAILED...', error);
 		});
@@ -526,6 +529,7 @@ function renderEditUser() {
 				const innerLiOne = document.createElement("li")
 				const innerLiTwo = document.createElement("li")
 				const innerLiThree = document.createElement("li")
+				const innerLiFour = document.createElement("li")
 				if (card.imageUrl) {
 					innerLiOne.innerHTML = `
 								<div class="container">
@@ -540,8 +544,9 @@ function renderEditUser() {
 					innerLiOne.addEventListener('click', event => {
 						fetchDeleteCard(card.id)
 					})
-					innerLiTwo.textContent = `${card.recipientEmail}`
-					innerLiThree.textContent = `${card.message}`
+					innerLiTwo.textContent = `Recipient Email: ${card.recipientEmail}`
+					innerLiThree.textContent = `Sender Email: ${card.senderEmail}`
+					innerLiFour.textContent = `Message: ${card.message}`
 				} else if (card.image_url) {
 					innerLiOne.innerHTML = `
 							<div class="container">
@@ -556,12 +561,14 @@ function renderEditUser() {
 					innerLiOne.addEventListener('click', event => {
 						fetchDeleteCard(card.id)
 					})
-					innerLiTwo.textContent = `${card.recipient_email}`
-					innerLiThree.textContent = `${card.message}`
+					innerLiTwo.textContent = `Recipient Email: ${card.recipient_email}`
+					innerLiThree.textContent = `Sender Email: ${card.sender_email}`
+					innerLiFour.textContent = `Message: ${card.message}`
 				}
 				secondUl.append(innerLiOne)
 				secondUl.append(innerLiTwo)
 				secondUl.append(innerLiThree)
+				secondUl.append(innerLiFour)
 				firstLi.append(secondUl)
 				cardUl.append(firstLi)
 			}
