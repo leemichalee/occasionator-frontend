@@ -260,7 +260,23 @@ function fetchPostCard(data) {
 			console.log('Success:', data)
 			currentUser.cards.push(data)
 			renderEditUser()
+			emailCard(data)
 		})
+}
+
+function emailCard(data) {
+	var templateParams = {
+		senderName: `${data.sender_name}`,
+		message: `${data.message}`,
+		subject: `${data.subject}`,
+		recipientEmail: `${data.recipient_email}`
+	};
+	emailjs.send('service_wkk3bi9', 'template_n1vmcb1', templateParams)
+		.then(function (response) {
+			console.log('SUCCESS!', response.status, response.text);
+		}, function (error) {
+			console.log('FAILED...', error);
+		});
 }
 
 function fetchDeleteCard(id) {

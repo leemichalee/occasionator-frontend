@@ -7,6 +7,12 @@
 	<title>Occasionator</title>
 	<link rel="stylesheet" type="text/css" href="./assets/style.css" />
 	<script defer type="text/javascript" src="./src/index.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+	<script type="text/javascript">
+		(function() {
+		emailjs.init("user_YURUYwTaCWnST7CBoFniH");
+		})();
+	</script>
 </head>
 
 <body>
@@ -22,13 +28,13 @@
 			<button id="editUserBtn" style="display:none">Edit User</button><br>
 			<select name="occasion" id="occasion-select">
 				<option value="">-Please choose an occasion-</option>
-    		<option value="birthday">Birthday</option>
-    		<option value="christmas">Christmas</option>
-    		<option value="fathers">Father's Day</option>
-    		<option value="hanukkah">Hanukkah</option>
-    		<option value="holidays">Happy Holidays</option>
-    		<option value="mothers">Mother's Day</option>
-    		<option value="valentines">Valentine's Day</option>
+				<option value="birthday">Birthday</option>
+				<option value="christmas">Christmas</option>
+				<option value="fathers">Father's Day</option>
+				<option value="hanukkah">Hanukkah</option>
+				<option value="holidays">Happy Holidays</option>
+				<option value="mothers">Mother's Day</option>
+				<option value="valentines">Valentine's Day</option>
 			</select>
 		</div>
 
@@ -46,34 +52,34 @@
 		<div class="main-div">
 
 			<form id="login-form" autocomplete="off" style="display:none">
-				<label for="email"> Email:</label> 
+				<label for="email"> Email:</label>
 				<input type="email" name="email" placeholder="name@example.com" /></br>
 
 				<input type="submit" value="Log In" />
 			</form>
 
 			<form id="signup-form" autocomplete="off" style="display:none">
-				<label for="email"> Email Address:</label> 
+				<label for="email"> Email Address:</label>
 				<input type="email" name="email" placeholder="name@example.com" /></br>
 
-				<label for="first_name">First Name:</label> 
+				<label for="first_name">First Name:</label>
 				<input type="first_name" name="first_name" placeholder="Jane" /></br>
 
-				<label for="last_name">Last Name:</label> 
+				<label for="last_name">Last Name:</label>
 				<input type="last_name" name="last_name" placeholder="Doe" /></br>
-				<input type="submit" value= "Sign Up" />
+				<input type="submit" value="Sign Up" />
 			</form>
 
 			<form id="edit-user-form" autocomplete="off" style="display:none">
-				<label for="email"> Email Address:</label> 
+				<label for="email"> Email Address:</label>
 				<input type="email" name="email" placeholder="name@example.com" /></br>
 
-				<label for="first_name">First Name:</label> 
+				<label for="first_name">First Name:</label>
 				<input type="first_name" name="first_name" placeholder="Jane" /></br>
 
-				<label for="last_name">Last Name:</label> 
+				<label for="last_name">Last Name:</label>
 				<input type="last_name" name="last_name" placeholder="Doe" /></br>
-				<input type="submit" value= "Save User Changes" />
+				<input type="submit" value="Save User Changes" />
 			</form>
 			<button id='deleteUserBtn' style="display:none">Delete Account</button>
 
@@ -86,7 +92,7 @@
 			<br>
 
 			<img id="card-image" src="./assets/occasions/birthday/birthday01.jpg" alt="Birthday Card" />
-			
+
 			<br>
 
 			<h1 id="mainDivH1">Send a Card!</h1>
@@ -116,8 +122,8 @@
 
 			<form id='editReminderForm' autocomplete="off" style="display:none">
 				<label for="text">Reminder:</label>
-				<input type="text" name="text"/> </br>
-				<input type="submit" value="Update Reminder"/>
+				<input type="text" name="text" /> </br>
+				<input type="submit" value="Update Reminder" />
 			</form>
 			<button id="deleteReminderBtn" style="display:none">Delete Reminder</button>
 
