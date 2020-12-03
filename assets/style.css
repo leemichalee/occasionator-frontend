@@ -3,12 +3,15 @@
   /* box-sizing: border-box; */
 }
 
+body {
+	margin: 0px;
+}
 .parent {
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 	grid-template-rows: 1fr 3fr;
-	grid-column-gap: 10px;
-	grid-row-gap: 10px;
+	/* grid-column-gap: 10px;
+	grid-row-gap: 10px; */
 	}
 	
 .title-div { grid-area: 1 / 1 / 2 / 2; }
@@ -20,30 +23,58 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: pink;
-	border-radius: 5%;
+	background-color: #ff70a6;
 }
 
 .title-div img {
-	height: 50%;
-	border-radius: 10%;
+	height: 100%;
 }
 
 .nav-div {
 	display: flex;
 	flex-direction: column;
-	padding: 10px;
-	background-color: yellow;
-	border-radius: 5%;
-
+	background-color: #ff70a6;
 }
+
+.nav-div button {
+	background-color: #ff70a6;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.nav-div button:hover {
+	background-color: white;
+	color: #ff70a6;
+  }
+
+.nav-div select {
+	appearance: none;
+	background-color: #ff70a6;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align-last: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.nav-div select:hover {
+	background-color: white;
+	color: #ff70a6;
+  }
 
 .card-div {
 	display: flex;
 	overflow-x: auto;
-	background-color: lightgreen;
-	border-radius: 5%;
-
+	background-color: #ff70a6;
 }
 
 .card-div img {
@@ -52,7 +83,6 @@
 	padding-right: 10px;
 	padding-bottom: 10px;
 	cursor: pointer;
-	border-radius: 10%;
 }
 
 .card-div img:first-child {
@@ -62,14 +92,12 @@
 .main-div {
 	display: flex;
 	flex-direction: column;
-	background-color: lightblue;
-	border-radius: 5%;
-
+	background-color: white;
+	padding-left: 10px;
 }
 
 .main-div img {
 	height: 350px;
-	border-radius: 10%;
 }
 
 textarea {
@@ -127,5 +155,6 @@ textarea {
   font-size: 16px;
   padding: 16px 32px;
 }
+
 
 /* CARD IMAGE HOVER END */
