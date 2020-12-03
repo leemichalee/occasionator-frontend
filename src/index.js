@@ -271,7 +271,7 @@ function emailCard(data) {
 		subject: `${data.subject}`,
 		recipientEmail: `${data.recipient_email}`
 	};
-	emailjs.send('service_wkk3bi9', 'template_n1vmcb1', templateParams)
+	emailjs.send('service_rjoa90u', 'template_n1vmcb1', templateParams)
 		.then(function (response) {
 			console.log('SUCCESS!', response.status, response.text);
 		}, function (error) {
