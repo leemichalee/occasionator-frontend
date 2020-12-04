@@ -29,12 +29,12 @@ const deleteUserBtn = document.querySelector('#deleteUserBtn')
 const mainDiv = document.querySelector('.main-div')
 const reminderForm = document.querySelector('#reminder-form')
 const reminderUl = document.querySelector('#reminderUl')
-const cardUl = document.querySelector('#cardUl')
 const reminderH3Div = document.querySelector('#reminderH3Div')
 const editReminderForm = document.querySelector('#editReminderForm')
 const deleteReminderBtn = document.querySelector('#deleteReminderBtn')
 const cardH3Div = document.querySelector('#cardH3Div')
 const hr = document.querySelector('#seperator')
+const userCardsDiv = document.querySelector('#userCardsDiv')
 
 // EVENT HANDLERS
 
@@ -171,7 +171,7 @@ function fetchPostSignUp(data) {
 			userFirstName = data.firstName
 			userLastName = data.lastName
 			userId = data.id
-			renderSignedUp()
+			renderLogin()
 		})
 }
 
@@ -291,7 +291,7 @@ function fetchDeleteCard(id) {
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data)
-			document.querySelector(`li[data-cardid="${id}"]`).closest('ul').closest('li').remove()
+			document.querySelector(`tr[data-cardid="${id}"]`).closest('table').remove()
 			deletedCardsArray.push(currentUser.cards.find(card => card.id == id))
 		})
 }
@@ -393,9 +393,9 @@ function renderCardImage(src, alt) {
 	hr.style.display = 'none'
 	reminderForm.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
-	cardUl.style.display = 'none'
 	editUserForm.style.display = 'none'
 	cardH3Div.style.display = 'none'
+	userCardsDiv.style.display = 'none'
 	if (userEmail) {
 		emailForm.style.display = ''
 		mainDivH3.style.display = 'none'
@@ -456,13 +456,13 @@ function renderLoggedOut() {
 	reminderForm.style.display = 'none'
 	editUserBtn.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
-	cardUl.style.display = 'none'
 	userEmail = ''
 	userFirstName = ''
 	userLastName = ''
 	userId = ''
 	currentUser = ''
 	cardH3Div.style.display = 'none'
+	userCardsDiv.style.display = 'none'
 }
 
 function renderSignUp() {
@@ -471,17 +471,6 @@ function renderSignUp() {
 	mainDivH3.style.display = 'none'
 	cardImage.style.display = 'none'
 	loginForm.style.display = 'none'
-}
-
-function renderSignedUp() {
-	signupForm.style.display = 'none'
-	cardImage.style.display = ''
-	mainDivH1.style.display = ''
-	emailForm.style.display = ''
-	loginBtn.style.display = 'none'
-	singupBtn.style.display = 'none'
-	logoutBtn.style.display = ''
-	editUserBtn.style.display = ''
 }
 
 function renderEditUser() {
@@ -497,6 +486,7 @@ function renderEditUser() {
 	reminderUl.innerHTML = ''
 	reminderUl.style.display = ''
 	hr.style.display = ''
+	userCardsDiv.style.display = ''
 
 	if (currentUser.reminders) {
 		reminderH3Div.style.display = ''
@@ -517,61 +507,54 @@ function renderEditUser() {
 	if (currentUser.cards) {
 		cardH3Div.style.display = ''
 		cardH3Div.innerHTML = ''
+		userCardsDiv.innerHTML = ''
 		const cardH3 = document.createElement('h3')
 		cardH3.textContent = "Your Sent Cards: Click on a card to delete"
 		cardH3Div.append(cardH3)
-		cardUl.style.display = ''
-		cardUl.innerHTML = ''
+
 		currentUser.cards.forEach(card => {
 			if (!deletedCardsArray.includes(card)) {
-				const firstLi = document.createElement("li")
-				const secondUl = document.createElement("ul")
-				const innerLiOne = document.createElement("li")
-				const innerLiTwo = document.createElement("li")
-				const innerLiThree = document.createElement("li")
-				const innerLiFour = document.createElement("li")
 				if (card.imageUrl) {
-					innerLiOne.innerHTML = `
+					const table = document.createElement('table')
+					table.className = "userCardsTable"
+					table.innerHTML = `
+						<tr data-cardid = ${card.id}>
+							<td align="center">
 								<div class="container">
 									<img class="image" src=${card.imageUrl} alt="Greeting Card">
-									<div class="middle">
-										<div class="text">Delete</div>
-									</div>
-								</div>
-							`
-					innerLiOne.classList.add('cardListImg')
-					innerLiOne.dataset.cardid = card.id
-					innerLiOne.addEventListener('click', event => {
-						fetchDeleteCard(card.id)
-					})
-					innerLiTwo.textContent = `Recipient Email: ${card.recipientEmail}`
-					innerLiThree.textContent = `Sender Email: ${card.senderEmail}`
-					innerLiFour.textContent = `Message: ${card.message}`
+		 							<div class="middle">
+		 								<div class="text">Delete</div>
+		 							</div>
+		 						</div>
+							</td>
+						</tr>
+						<tr><td>Recipient Email: ${card.recipientEmail}</td></tr>
+						<tr><td>Sender Email: ${card.senderEmail}</td></tr>
+						<tr><td>Message: ${card.message}</td></tr>
+					`
+					userCardsDiv.append(table)
 				} else if (card.image_url) {
-					innerLiOne.innerHTML = `
-							<div class="container">
-								<img class="image" src=${card.image_url} alt="Greeting Card">
-								<div class="middle">
-									<div class="text">Delete</div>
-								</div>
-							</div>
-							`
-					innerLiOne.classList.add('cardListImg')
-					innerLiOne.dataset.cardid = card.id
-					innerLiOne.addEventListener('click', event => {
-						fetchDeleteCard(card.id)
-					})
-					innerLiTwo.textContent = `Recipient Email: ${card.recipient_email}`
-					innerLiThree.textContent = `Sender Email: ${card.sender_email}`
-					innerLiFour.textContent = `Message: ${card.message}`
+					const table = document.createElement('table')
+					table.className = "userCardsTable"
+					table.innerHTML = `
+						<tr data-cardid = ${card.id}>
+							<td align="center">
+								<div class="container">
+									<img class="image" src=${card.imageUrl} alt="Greeting Card">
+		 							<div class="middle">
+		 								<div class="text">Delete</div>
+		 							</div>
+		 						</div>
+							</td>
+						</tr>
+						<tr><td>Recipient Email: ${card.recipientEmail}</td></tr>
+						<tr><td>Sender Email: ${card.senderEmail}</td></tr>
+						<tr><td>Message: ${card.message}</td></tr>
+					`
+					userCardsDiv.append(table)
 				}
-				secondUl.append(innerLiOne)
-				secondUl.append(innerLiTwo)
-				secondUl.append(innerLiThree)
-				secondUl.append(innerLiFour)
-				firstLi.append(secondUl)
-				cardUl.append(firstLi)
 			}
+			document.querySelectorAll(".text").forEach( image => image.addEventListener('click', event => fetchDeleteCard(card.id)) )
 		})
 	}
 }
