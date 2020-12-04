@@ -1,19 +1,20 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
-  /* box-sizing: border-box; */
 }
 
-body {
-	margin: 0px;
-	height:100%;
+html, body { 
+	margin: 0;
+	padding: 0;
+	height: 100%; width: 100%;
 }
+
+
 .parent {
 	display: grid;
-	grid-template-columns: 1fr 3fr;
-	grid-template-rows: 1fr 3fr;
-	/* grid-column-gap: 10px;
-	grid-row-gap: 10px; */
-	}
+	grid-template-columns: 200px 1fr;
+	grid-template-rows: 200px 1fr;
+	height: 100%;
+}
 	
 .title-div { grid-area: 1 / 1 / 2 / 2; }
 .nav-div { grid-area: 2 / 1 / 3 / 2; }
@@ -27,26 +28,21 @@ body {
 	background-color: #ff70a6;
 }
 
-.title-div img {
-	height: 100%;
-}
-
 .nav-div {
 	display: flex;
 	flex-direction: column;
 	background-color: #ff70a6;
+	height: 100%;
 }
 
 .nav-div button {
 	background-color: #ff70a6;
 	border: none;
 	color: white;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
+	padding: 15px;
 	font-size: 20px;
 	cursor: pointer;
+	outline: none;
 }
 
 .nav-div button:hover {
@@ -55,14 +51,13 @@ body {
   }
 
 .nav-div select {
+	outline: none;
 	appearance: none;
 	background-color: #ff70a6;
 	border: none;
 	color: white;
-	padding: 15px 32px;
+	padding: 15px;
 	text-align-last: center;
-	text-decoration: none;
-	display: inline-block;
 	font-size: 20px;
 	cursor: pointer;
 }
@@ -75,11 +70,19 @@ body {
 .card-div {
 	display: flex;
 	overflow-x: auto;
-	background-color: white;
+}
+
+.card-div::-webkit-scrollbar {
+  display: none;
+}
+
+.card-div {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .card-div img {
-	height: 150px;
+	height: 180px;
 	padding-top: 10px;
 	padding-right: 10px;
 	cursor: pointer;
@@ -94,14 +97,15 @@ body {
 }
 
 .main-div {
+	display: flex;
 	flex-direction: column;
-	background-color: white;
-	padding-left: 10px;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 
 .main-div img {
 	width: 50%;
-	float:left;
 }
 
 textarea {
@@ -118,61 +122,10 @@ textarea {
 	height: 20%;
 }
 
-/* CARD IMAGE HOVER */
-
-.container {
-	position: relative;
-	width: 50%;
-}
-
-.image {
-  opacity: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: .5s ease;
-  backface-visibility: hidden;
-}
-
-.middle {
-  transition: .5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.container:hover .image {
-  opacity: 0.3;
-}
-
-.container:hover .middle {
-  opacity: 1;
-}
-
-.text {
-  background-color: #d11a2a;
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
-}
-
-#copyright {
-	position: absolute;
-	bottom: 0;
-	margin: 10px;
-}
-
-.form-css {
-	margin-left: 50%;
-	padding-left: 20px;
-}
-
-#login-form {
-	text-align: center;
+#login-form, #signup-form, #email-form, #reminder-form, #editReminderForm, #edit-user-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 input[type='submit'] {
@@ -182,7 +135,6 @@ input[type='submit'] {
 	padding: 5px 10px;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
 	font-size: 20px;
 	cursor: pointer;
 }
@@ -192,20 +144,6 @@ input:hover[type='submit']  {
 	color: white;
   }
 
-.email-textbox {
-	float: right;
-}
-
-#signup-form, #edit-user-form, #reminder-form, #reminderH3Div, #editReminderForm{
-	text-align: center;
-}
-
-#reminderUl {
-	margin-left: 40%;
-	list-style-type: none;
-}
-
-
 #deleteUserBtn {
 	background-color: #ff70a6;
 	border: none;
@@ -213,7 +151,6 @@ input:hover[type='submit']  {
 	padding: 5px 10px;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
 	font-size: 20px;
 	cursor: pointer;
 }
@@ -229,7 +166,6 @@ input:hover[type='submit']  {
 	padding: 5px 10px;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
 	font-size: 20px;
 	cursor: pointer;
 }
@@ -237,6 +173,3 @@ input:hover[type='submit']  {
 	background-color: #c41e3a;
 	color: white;
 }
-
-
-/* CARD IMAGE HOVER END */

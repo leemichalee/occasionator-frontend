@@ -50,49 +50,49 @@
 		</div>
 
 		<div class="main-div">
-			
+
 			<form id="login-form" autocomplete="off" style="display:none">
-				<table style="width:25%; margin-left: auto;margin-right: auto">
-				<tr>
-				<td><label for="email"> Email</label></td>
-				<td><input type="email" name="email" placeholder="name@example.com" /></td>
-				</tr>
+				<table>
+					<tr>
+						<td><label for="email"> Email</label></td>
+						<td><input type="email" name="email" placeholder="name@example.com" /></td>
+					</tr>
 				</table><br>
 				<input type="submit" value="Log In" />
 			</form>
 
 			<form id="signup-form" autocomplete="off" style="display:none">
-				<table style="width:25%; margin-left: auto;margin-right: auto">
-				<tr>
-				<td><label for="email"> Email</label></td>
-				<td><input type="email" name="email" placeholder="name@example.com" /></td>
-				</tr>
-				<tr>
-				<td><label for="first_name">First Name</label></td>
-				<td><input type="first_name" name="first_name" placeholder="Jane" /></td>
-				</tr>
-				<tr>
-				<td><label for="last_name">Last Name</label></td>
-				<td><input type="last_name" name="last_name" placeholder="Doe" /></td>
-				</tr>
+				<table>
+					<tr>
+						<td><label for="email"> Email</label></td>
+						<td><input type="email" name="email" placeholder="name@example.com" /></td>
+					</tr>
+					<tr>
+						<td><label for="first_name">First Name</label></td>
+						<td><input type="first_name" name="first_name" placeholder="Jane" /></td>
+					</tr>
+					<tr>
+						<td><label for="last_name">Last Name</label></td>
+						<td><input type="last_name" name="last_name" placeholder="Doe" /></td>
+					</tr>
 				</table><br>
 				<input type="submit" value="Sign Up" />
 			</form>
 
 			<form id="edit-user-form" autocomplete="off" style="display:none">
-				<table style="width:30%; margin-left: auto;margin-right: auto">
-				<tr>
-				<td><label for="email"> Email Address:</label></td>
-				<td><input type="email" name="email" placeholder="name@example.com" /></td>
-				</tr>
-				<tr>
-				<td><label for="first_name">First Name:</label></td>
-				<td><input type="first_name" name="first_name" placeholder="Jane" /></td>
-				</tr>
-				<tr>
-				<td><label for="last_name">Last Name:</label></td>
-				<td><input type="last_name" name="last_name" placeholder="Doe" /></td>
-				</tr>
+				<table>
+					<tr>
+						<td><label for="email"> Email Address:</label></td>
+						<td><input type="email" name="email" placeholder="name@example.com" /></td>
+					</tr>
+					<tr>
+						<td><label for="first_name">First Name:</label></td>
+						<td><input type="first_name" name="first_name" placeholder="Jane" /></td>
+					</tr>
+					<tr>
+						<td><label for="last_name">Last Name:</label></td>
+						<td><input type="last_name" name="last_name" placeholder="Doe" /></td>
+					</tr>
 				</table><br>
 				<input type="submit" value="Save User Changes" />
 			</form>
@@ -104,78 +104,72 @@
 			<ul id="reminderUl" style="display:none">
 			</ul>
 
-			<form id="reminder-form" autocomplete="off" style="display:none">
-				<table style="width:30%; margin-left: auto;margin-right: auto">
-				<tr>
-				<td><label for="text">Reminder:</label></td>
-				<td><input type="text" name="text" placeholder="New Reminder" /></td>
-				</tr>
-				</table>
-				<input type="submit" value="Create" />
-			</form>
+			<button id="deleteReminderBtn" style="display:none">Delete Reminder</button>
 
 			<form id='editReminderForm' autocomplete="off" style="display:none">
-				<table style="width:30%; margin-left: auto;margin-right: auto">
-				<tr>
-				<td><label for="text">Reminder:</label></td>
-				<td><input type="text" name="text" /> </td>
-				</tr>
+				<table>
+					<tr>
+						<td><label for="text">Reminder:</label></td>
+						<td><input type="text" name="text" /> </td>
+					</tr>
 				</table>
 				<input type="submit" value="Update Reminder" />
 			</form>
-			<button id="deleteReminderBtn" style="display:none">Delete Reminder</button>
 
+			<form id="reminder-form" autocomplete="off" style="display:none">
+				<table>
+					<tr>
+						<td><label for="text">Reminder:</label></td>
+						<td><input type="text" name="text" placeholder="New Reminder" /></td>
+					</tr>
+				</table>
+				<input type="submit" value="Create" />
+			</form>
+		
 			<hr id='seperator' style='display:none'>
-			
+
 			<img id="card-image" src="https://i.ibb.co/6Z9sZdd/birthday01.jpg" alt="Birthday Card" />
 
-			<div class='form-css'>
+			
 			<h1 id="mainDivH1">Send a Card!</h1>
 
 			<h3 id="mainDivH3">Please Log In to Send a Card</h3>
 
 			<form id="email-form" autocomplete="off" style="display:none">
-				<table style="width:100%">
-				<tr>
-				<td><label for="recipient">Recipient Email: </label></td>
-				<td><input type="email" name="recipient" placeholder="name@example.com" /></td>
-				</tr>
-				<tr>
-				<td><label for="sender_email">Sender Email: </label></td>
-				<td><input type="email" name="sender_email" placeholder="name@example.com" /></td>
-				</tr>
-				<tr>
-				<td><label for="sender">Sender Name: </label></td>
-				<td><input type="text" name="sender" placeholder="John Doe" /></td>
-				</tr>
-				<tr>
-				<td><label for="subject">Subject: </label></td>
-				<td><input type="text" name="subject" placeholder="Happy Birthday Grandma!" /></td>
-				</tr>
-				<tr>
-				<td><label for="note">Note: </label></td>
-				<td><textarea name="note" form="email-form" placeholder="Enter note here..."></textarea></td>
-				</tr>
+				<table>
+					<tr>
+						<td><label for="recipient">Recipient Email: </label></td>
+						<td><input type="email" name="recipient" placeholder="name@example.com" /></td>
+					</tr>
+					<tr>
+						<td><label for="sender_email">Sender Email: </label></td>
+						<td><input type="email" name="sender_email" placeholder="name@example.com" /></td>
+					</tr>
+					<tr>
+						<td><label for="sender">Sender Name: </label></td>
+						<td><input type="text" name="sender" placeholder="John Doe" /></td>
+					</tr>
+					<tr>
+						<td><label for="subject">Subject: </label></td>
+						<td><input type="text" name="subject" placeholder="Happy Birthday Grandma!" /></td>
+					</tr>
+					<tr>
+						<td><label for="note">Note: </label></td>
+						<td><textarea name="note" form="email-form" placeholder="Enter note here..."></textarea></td>
+					</tr>
 				</table>
-				<input style='float:right; margin-right:50%' type="submit" value="Send" />
+				<input type="submit" value="Send" />
 			</form>
-		</div>
-
-
-
-			
 
 			<div id="cardH3Div" style="display:none"></div>
-			<ul id='cardUl' style='display:none'>
-			</ul>
+			<ul id='cardUl' style='display:none'></ul>
 			<footer id="copyright">
-				Occasionator Copyright (c) 2020. A Lee Michaeli & Roman Tetelbaum Project
+				<p>Occasionator Copyright (c) 2020. A Lee Michaeli & Roman Tetelbaum Project</p>
 			</footer>
-			
+
 		</div>
 
 	</div>
-
 
 </body>
 
