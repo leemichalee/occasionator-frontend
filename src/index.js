@@ -433,11 +433,15 @@ function renderLoggedIn(usersArray) {
 		userLastName = currentUser.lastName
 		userId = currentUser.id
 	} else {
+<<<<<<< HEAD
 		const p = document.createElement("p")
 		p.style.color = "red"
 		p.textContent = "Invalid Email Address"
 		loginForm.append(p)
 		userEmail = ''
+=======
+		alert("Email does not match an existing account. Please try again or sign up.")
+>>>>>>> master
 	}
 }
 
