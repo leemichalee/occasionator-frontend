@@ -33,7 +33,6 @@ const reminderH3Div = document.querySelector('#reminderH3Div')
 const editReminderForm = document.querySelector('#editReminderForm')
 const deleteReminderBtn = document.querySelector('#deleteReminderBtn')
 const cardH3Div = document.querySelector('#cardH3Div')
-const hr = document.querySelector('#seperator')
 const userCardsDiv = document.querySelector('#userCardsDiv')
 
 // EVENT HANDLERS
@@ -390,7 +389,6 @@ function renderCardImage(src, alt) {
 	deleteReminderBtn.style.display = 'none'
 	reminderH3Div.style.display = 'none'
 	reminderOl.style.display = 'none'
-	hr.style.display = 'none'
 	reminderForm.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
 	editUserForm.style.display = 'none'
@@ -452,7 +450,6 @@ function renderLoggedOut() {
 	deleteReminderBtn.style.display = 'none'
 	reminderH3Div.style.display = 'none'
 	reminderOl.style.display = 'none'
-	hr.style.display = 'none'
 	reminderForm.style.display = 'none'
 	editUserBtn.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
@@ -485,7 +482,6 @@ function renderEditUser() {
 	reminderForm.style.display = ''
 	reminderOl.innerHTML = ''
 	reminderOl.style.display = ''
-	hr.style.display = ''
 	userCardsDiv.style.display = ''
 
 	if (currentUser.reminders) {
