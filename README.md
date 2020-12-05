@@ -15,3 +15,5 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 This program comes with ABSOLUTELY NO WARRANTY.
+
+Background vector created by GarryKillian - www.freepik.com: <https://www.freepik.com/vectors/background>

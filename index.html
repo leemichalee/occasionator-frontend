@@ -26,15 +26,15 @@
 			<button id="signupBtn">Sign Up</button>
 			<button id="logoutBtn" style="display:none">Logout</button>
 			<button id="editUserBtn" style="display:none">Edit User</button>
-			<select name="occasion" id="occasion-select">
+			<select name="occasion" id="occasion-select" class="emily">
 				<option value="">Occasion</option>
-				<option value="birthday">Birthday</option>
-				<option value="christmas">Christmas</option>
-				<option value="fathers">Father's Day</option>
-				<option value="hanukkah">Hanukkah</option>
-				<option value="holidays">Happy Holidays</option>
-				<option value="mothers">Mother's Day</option>
-				<option value="valentines">Valentine's Day</option>
+				<option value="birthday"><bold>></bold>Birthday</option>
+				<option value="christmas"><bold>></bold>Christmas</option>
+				<option value="fathers"><bold>></bold>Father's Day</option>
+				<option value="hanukkah"><bold>></bold>Hanukkah</option>
+				<option value="holidays"><bold>></bold>Happy Holidays</option>
+				<option value="mothers"><bold>></bold>Mother's Day</option>
+				<option value="valentines"><bold>></bold>Valentine's Day</option>
 			</select>
 		</div>
 
@@ -51,7 +51,8 @@
 
 		<div class="main-div">
 			
-			<form id="login-form" autocomplete="off" style="display:none">
+			<form id="login-form" autocomplete="off" style="display:none" class="pink bold">
+				<h3>Log In</h3>
 				<table>
 					<tr>
 						<td><label for="email"> Email</label></td>
@@ -61,7 +62,8 @@
 				<input type="submit" value="Log In" />
 			</form>
 
-			<form id="signup-form" autocomplete="off" style="display:none">
+			<form id="signup-form" autocomplete="off" style="display:none" class="pink bold">
+				<h3>Sign Up</h3>
 				<table>
 					<tr>
 						<td><label for="email"> Email</label></td>
@@ -79,7 +81,8 @@
 				<input type="submit" value="Sign Up" />
 			</form>
 
-			<form id="edit-user-form" autocomplete="off" style="display:none">
+			<form id="edit-user-form" autocomplete="off" style="display:none" class="pink bold">
+				<h3>Edit User</h3>
 				<table>
 					<tr>
 						<td><label for="email"> Email Address:</label></td>
@@ -101,12 +104,12 @@
 			<hr id='seperator' style='display:none'>
 
 			<div id="reminderH3Div" style="display:none"></div>
-			<ul id="reminderUl" style="display:none">
-			</ul>
+			<ol id="reminderOl" style="display:none" class="pink">
+			</ol>
 
 			<button id="deleteReminderBtn" style="display:none">Delete Reminder</button>
 
-			<form id='editReminderForm' autocomplete="off" style="display:none">
+			<form id='editReminderForm' autocomplete="off" style="display:none" class="pink">
 				<table>
 					<tr>
 						<td><label for="text">Reminder:</label></td>
@@ -116,7 +119,7 @@
 				<input type="submit" value="Update Reminder" />
 			</form>
 
-			<form id="reminder-form" autocomplete="off" style="display:none">
+			<form id="reminder-form" autocomplete="off" style="display:none" class="pink">
 				<table>
 					<tr>
 						<td><label for="text">Reminder:</label></td>
@@ -130,11 +133,11 @@
 
 			<img id="card-image" src="https://i.ibb.co/6Z9sZdd/birthday01.jpg" alt="Birthday Card" />
 	
-			<h1 id="mainDivH1">Send a Card!</h1>
+			<h1 id="mainDivH1" class="emily pink bold underline">Send a Card!</h1>
 
-			<h3 id="mainDivH3">Please Log In to Send a Card</h3>
+			<h3 id="mainDivH3" class="pink">Please Log In to Send a Card</h3>
 
-			<form id="email-form" autocomplete="off" style="display:none">
+			<form id="email-form" autocomplete="off" style="display:none" class="pink bold">
 				<table>
 					<tr>
 						<td><label for="recipient">Recipient Email: </label></td>
@@ -166,7 +169,7 @@
 		
 
 			<div id="footerDiv">
-				<footer>Occasionator Copyright (c) 2020. A Lee Michaeli & Roman Tetelbaum Project</footer>
+				<footer class="pink">Occasionator Copyright (c) 2020. A Lee Michaeli & Roman Tetelbaum Project</footer>
 			</div>
 
 		</div>

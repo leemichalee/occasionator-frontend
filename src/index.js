@@ -28,7 +28,7 @@ const editUserForm = document.querySelector('#edit-user-form')
 const deleteUserBtn = document.querySelector('#deleteUserBtn')
 const mainDiv = document.querySelector('.main-div')
 const reminderForm = document.querySelector('#reminder-form')
-const reminderUl = document.querySelector('#reminderUl')
+const reminderOl = document.querySelector('#reminderOl')
 const reminderH3Div = document.querySelector('#reminderH3Div')
 const editReminderForm = document.querySelector('#editReminderForm')
 const deleteReminderBtn = document.querySelector('#deleteReminderBtn')
@@ -109,7 +109,7 @@ mainDiv.addEventListener('click', event => {
 	}
 })
 
-reminderUl.addEventListener('click', event => {
+reminderOl.addEventListener('click', event => {
 	if (event.target.matches('li')) {
 		currentReminder = event.target.dataset.id
 		editReminderForm.text.value = event.target.textContent
@@ -389,7 +389,7 @@ function renderCardImage(src, alt) {
 	editReminderForm.style.display = 'none'
 	deleteReminderBtn.style.display = 'none'
 	reminderH3Div.style.display = 'none'
-	reminderUl.style.display = 'none'
+	reminderOl.style.display = 'none'
 	hr.style.display = 'none'
 	reminderForm.style.display = 'none'
 	deleteUserBtn.style.display = 'none'
@@ -451,7 +451,7 @@ function renderLoggedOut() {
 	editReminderForm.style.display = 'none'
 	deleteReminderBtn.style.display = 'none'
 	reminderH3Div.style.display = 'none'
-	reminderUl.style.display = 'none'
+	reminderOl.style.display = 'none'
 	hr.style.display = 'none'
 	reminderForm.style.display = 'none'
 	editUserBtn.style.display = 'none'
@@ -483,8 +483,8 @@ function renderEditUser() {
 	editUserForm.last_name.value = userLastName
 	deleteUserBtn.style.display = ''
 	reminderForm.style.display = ''
-	reminderUl.innerHTML = ''
-	reminderUl.style.display = ''
+	reminderOl.innerHTML = ''
+	reminderOl.style.display = ''
 	hr.style.display = ''
 	userCardsDiv.style.display = ''
 
@@ -499,7 +499,7 @@ function renderEditUser() {
 				const li = document.createElement("li")
 				li.dataset.id = reminder.id
 				li.textContent = reminder.text
-				reminderUl.append(li)
+				reminderOl.append(li)
 			}
 		})
 	}
@@ -516,7 +516,7 @@ function renderEditUser() {
 			if (!deletedCardsArray.includes(card)) {
 				if (card.imageUrl) {
 					const table = document.createElement('table')
-					table.className = "userCardsTable"
+					table.classList.add("userCardsTable", "pink")
 					table.innerHTML = `
 						<tr data-cardid = ${card.id}>
 							<td align="center">
