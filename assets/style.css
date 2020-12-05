@@ -99,13 +99,20 @@ html, body {
 .main-div {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	height: 100%;
+	overflow-x: scroll;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 .main-div img {
-	width: 50%;
+	width: 45%;
+}
+
+#footerDiv {
+	position: absolute;
+	bottom: 0;
+	background-color: white;
 }
 
 textarea {
@@ -115,11 +122,6 @@ textarea {
 
 #reminderUl, .cardListImg {
 	cursor: pointer;
-}
-
-#cardUl img {
-	width: 20%;
-	height: 20%;
 }
 
 #login-form, #signup-form, #email-form, #reminder-form, #editReminderForm, #edit-user-form {
@@ -226,4 +228,5 @@ input:hover[type='submit']  {
 	color: white;
 	font-size: 16px;
 	padding: 16px 32px;
+	cursor: pointer;
 }
