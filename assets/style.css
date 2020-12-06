@@ -86,7 +86,11 @@ html, body {
 .nav-div select:hover {
 	background-color: white;
 	color: #ff70a6;
-  }
+}
+
+#glogo {
+	text-align: center;
+}
 
 .card-div {
 	display: flex;
@@ -148,6 +152,10 @@ form h3 {
 	position: absolute;
 	bottom: 0;
 	background-color: white;
+}
+
+#footerDiv img {
+	width: 2.5%
 }
 
 textarea {
