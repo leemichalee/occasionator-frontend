@@ -94,7 +94,6 @@ html, body {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	padding-left: 10px;
-	margin-right: 5px;
 }
 
 .card-div::-webkit-scrollbar {
@@ -164,6 +163,10 @@ textarea {
 	margin-top: 0%;
 }
 
+#reminderOl li:hover {
+	font-weight: 900;
+}
+
 #reminderH3Div h3, #cardH3Div h3 {
 	color: #ff70a6;
 	font-weight: bold;
@@ -179,7 +182,7 @@ textarea {
 
 #prev {
 	margin-top: 45px;
-	opacity: 0.5;
+	opacity: 0.6;
 	color: #ff70a6;
 	font-size: 100px;
 	position: absolute;
@@ -189,7 +192,7 @@ textarea {
 #next {
 	margin-top: 45px;
 	right: 10px;
-	opacity: 0.5;
+	opacity: 0.6;
 	color: #ff70a6;
 	font-size: 100px;
 	position: absolute;
