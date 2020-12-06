@@ -1,3 +1,7 @@
+// URL
+
+const baseUrl = "https://occasionator.herokuapp.com/"
+
 // APPLICATION STATE
 
 let userEmail;
@@ -147,7 +151,7 @@ emailForm.addEventListener('submit', event => {
 // FETCHERS
 
 function fetchGetEmail() {
-	fetch("http://localhost:3000/api/v1/users")
+	fetch(`${baseUrl}/api/v1/users`)
 		.then(response => response.json())
 		.then(usersArray => {
 			console.log(usersArray)
@@ -156,7 +160,7 @@ function fetchGetEmail() {
 }
 
 function fetchPostSignUp(data) {
-	fetch('http://localhost:3000/api/v1/users', {
+	fetch(`${baseUrl}/api/v1/users`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -175,7 +179,7 @@ function fetchPostSignUp(data) {
 }
 
 function fetchPatchUser(data) {
-	fetch(`http://localhost:3000/api/v1/users/${data.id}`, {
+	fetch(`${baseUrl}/api/v1/users/${data.id}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
@@ -193,7 +197,7 @@ function fetchPatchUser(data) {
 }
 
 function fetchDeleteUser(id) {
-	fetch(`http://localhost:3000/api/v1/users/${id}`, {
+	fetch(`${baseUrl}/api/v1/users/${id}`, {
 		method: 'DELETE',
 	})
 		.then(response => response.json())
@@ -205,7 +209,7 @@ function fetchDeleteUser(id) {
 }
 
 function fetchPostReminders(data) {
-	fetch('http://localhost:3000/api/v1/reminders', {
+	fetch(`${baseUrl}/api/v1/reminders`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -221,7 +225,7 @@ function fetchPostReminders(data) {
 }
 
 function fetchPatchReminder(data) {
-	fetch(`http://localhost:3000/api/v1/reminders/${currentReminder}`, {
+	fetch(`${baseUrl}/api/v1/reminders/${currentReminder}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
@@ -237,7 +241,7 @@ function fetchPatchReminder(data) {
 }
 
 function fetchDeleteReminder() {
-	fetch(`http://localhost:3000/api/v1/reminders/${currentReminder}`, {
+	fetch(`${baseUrl}/api/v1/reminders/${currentReminder}`, {
 		method: 'DELETE',
 	})
 		.then(response => response.json())
@@ -249,7 +253,7 @@ function fetchDeleteReminder() {
 }
 
 function fetchPostCard(data) {
-	fetch('http://localhost:3000/api/v1/cards', {
+	fetch(`${baseUrl}/api/v1/cards`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -284,7 +288,7 @@ function emailCard(data) {
 }
 
 function fetchDeleteCard(id) {
-	fetch(`http://localhost:3000/api/v1/cards/${id}`, {
+	fetch(`${baseUrl}/api/v1/cards/${id}`, {
 		method: 'DELETE',
 	})
 		.then(response => response.json())
