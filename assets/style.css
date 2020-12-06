@@ -265,6 +265,10 @@ input:hover[type='submit']  {
 	margin-right: auto;
 }
 
+.message {
+	width: 200px;
+}
+
 .container {
 	position: relative;
 }

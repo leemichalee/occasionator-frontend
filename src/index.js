@@ -545,7 +545,7 @@ function renderEditUser() {
 						</tr>
 						<tr><td>Recipient Email: ${card.recipientEmail}</td></tr>
 						<tr><td>Sender Email: ${card.senderEmail}</td></tr>
-						<tr><td>Message: ${card.message}</td></tr>
+						<tr><td class="message">Message: ${card.message}</td></tr>
 					`
 					userCardsDiv.append(table)
 				} else if (card.image_url) {
@@ -564,7 +564,7 @@ function renderEditUser() {
 						</tr>
 						<tr><td>Recipient Email: ${card.recipient_email}</td></tr>
 						<tr><td>Sender Email: ${card.sender_email}</td></tr>
-						<tr><td>Message: ${card.message}</td></tr>
+						<tr><td class="message">Message: ${card.message}</td></tr>
 					`
 					userCardsDiv.append(table)
 				}
