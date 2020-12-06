@@ -549,7 +549,7 @@ function renderEditUser() {
 					userCardsDiv.append(table)
 				} else if (card.image_url) {
 					const table = document.createElement('table')
-					table.className = "userCardsTable"
+					table.classList.add = ("userCardsTable", "pink")
 					table.innerHTML = `
 						<tr data-cardid = ${card.id}>
 							<td align="center">
