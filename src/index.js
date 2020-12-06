@@ -554,15 +554,15 @@ function renderEditUser() {
 						<tr data-cardid = ${card.id}>
 							<td align="center">
 								<div class="container">
-									<img class="image" src=${card.imageUrl} alt="Greeting Card">
+									<img class="image" src=${card.image_url} alt="Greeting Card">
 		 							<div class="middle">
 		 								<div class="text">Delete</div>
 		 							</div>
 		 						</div>
 							</td>
 						</tr>
-						<tr><td>Recipient Email: ${card.recipientEmail}</td></tr>
-						<tr><td>Sender Email: ${card.senderEmail}</td></tr>
+						<tr><td>Recipient Email: ${card.recipient_email}</td></tr>
+						<tr><td>Sender Email: ${card.sender_email}</td></tr>
 						<tr><td>Message: ${card.message}</td></tr>
 					`
 					userCardsDiv.append(table)
