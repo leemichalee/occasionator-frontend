@@ -300,6 +300,8 @@ function fetchDeleteCard(id) {
 function renderOccasion(occasion) {
 	if (occasion === "birthday") {
 		cardDiv.innerHTML = `
+			<div id="prev">&#10094;</div>
+			<div id="next">&#10095;</div>
 			<img src="https://i.ibb.co/6Z9sZdd/birthday01.jpg" alt="birthday01">
 			<img src="https://i.ibb.co/cNx9R4V/birthday02.jpg" alt="birthday02">
 			<img src="https://i.ibb.co/F8YcLvq/birthday03.jpg" alt="birthday03">
@@ -311,6 +313,8 @@ function renderOccasion(occasion) {
 		`
 	} else if (occasion === "christmas") {
 		cardDiv.innerHTML = `
+			<div id="prev">&#10094;</div>
+			<div id="next">&#10095;</div>
 			<img src="https://i.ibb.co/nDXkTtL/christmas01.jpg" alt="christmas01">
 			<img src="https://i.ibb.co/6nVRWr0/christmas02.jpg" alt="christmas02">
 			<img src="https://i.ibb.co/LrxsXMm/christmas03.jpg" alt="christmas03">
@@ -322,6 +326,8 @@ function renderOccasion(occasion) {
 		`
 	} else if (occasion === "fathers") {
 		cardDiv.innerHTML = `
+			<div id="prev">&#10094;</div>
+			<div id="next">&#10095;</div>
 			<img src="https://i.ibb.co/G36tSNY/fathers01.jpg" alt="fathers01">
 			<img src="https://i.ibb.co/wrbY3Mn/fathers02.jpg" alt="fathers02">
 			<img src="https://i.ibb.co/qRQQYxk/fathers03.jpg" alt="fathers03">
@@ -333,6 +339,8 @@ function renderOccasion(occasion) {
 		`
 	} else if (occasion === "hanukkah") {
 		cardDiv.innerHTML = `
+			<div id="prev">&#10094;</div>
+			<div id="next">&#10095;</div>
 			<img src="https://i.ibb.co/87F3dnf/hanukkah01.jpg" alt="hanukkah01">
 			<img src="https://i.ibb.co/NTXbjrm/hanukkah02.jpg" alt="hanukkah02">
 			<img src="https://i.ibb.co/kXFdDZy/hanukkah03.jpg" alt="hanukkah03">
@@ -344,6 +352,8 @@ function renderOccasion(occasion) {
 		`
 	} else if (occasion === "holidays") {
 		cardDiv.innerHTML = `
+			<div id="prev">&#10094;</div>
+			<div id="next">&#10095;</div>
 			<img src="https://i.ibb.co/tMvFC9k/holidays01.jpg" alt="holidays01">
 			<img src="https://i.ibb.co/YcW6FSL/holidays02.jpg" alt="holidays02">
 			<img src="https://i.ibb.co/ynbWpNd/holidays03.jpg" alt="holidays03">
@@ -355,6 +365,8 @@ function renderOccasion(occasion) {
 		`
 	} else if (occasion === "mothers") {
 		cardDiv.innerHTML = `
+			<div id="prev">&#10094;</div>
+			<div id="next">&#10095;</div>
 			<img src="https://i.ibb.co/5jdbQc2/mothers01.jpg" alt="mothers01">
 			<img src="https://i.ibb.co/k9Z1ytr/mothers02.jpg" alt="mothers02">
 			<img src="https://i.ibb.co/dt6SMVM/mothers03.jpg" alt="mothers03">
@@ -366,6 +378,8 @@ function renderOccasion(occasion) {
 		`
 	} else if (occasion === "valentines") {
 		cardDiv.innerHTML = `
+			<div id="prev">&#10094;</div>
+			<div id="next">&#10095;</div>
 			<img src="https://i.ibb.co/br2XnxZ/valentines01.jpg" alt="valentines01">
 			<img src="https://i.ibb.co/WyV0hm9/valentines02.jpg" alt="valentines02">
 			<img src="https://i.ibb.co/gvxXVty/valentines03.jpg" alt="valentines03">
