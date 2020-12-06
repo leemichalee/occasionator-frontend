@@ -1,6 +1,6 @@
 // URL
 
-const baseUrl = "https://occasionator.herokuapp.com/"
+const baseUrl = "https://occasionator.herokuapp.com"
 
 // APPLICATION STATE
 
@@ -263,8 +263,6 @@ function fetchPostCard(data) {
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data)
-			currentUser.cards.push(data)
-			renderEditUser()
 			emailCard(data)
 		})
 }
@@ -282,8 +280,11 @@ function emailCard(data) {
 		.then(function (response) {
 			console.log('SUCCESS!', response.status, response.text);
 			alert("Email Greeting Sent!")
+			currentUser.cards.push(data)
+			renderEditUser()
 		}, function (error) {
 			console.log('FAILED...', error);
+			alert("There was a problem sending your email. Please try again.")
 		});
 }
 
