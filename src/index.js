@@ -81,7 +81,8 @@ signupForm.addEventListener('submit', event => {
 		"last_name": event.target.last_name.value,
 		"email": event.target.email.value
 	}
-	fetchPostSignUp(data)
+	fetchCheckEmail(data)
+	event.target.reset
 })
 
 editUserForm.addEventListener('submit', event => {
@@ -149,6 +150,20 @@ emailForm.addEventListener('submit', event => {
 })
 
 // FETCHERS
+
+function fetchCheckEmail(data) {
+	fetch(`${baseUrl}/api/v1/users`)
+		.then(response => response.json())
+		.then(usersArray => {
+			console.log(usersArray)
+			if (!usersArray.map(user => user.email).includes(data.email)) {
+				fetchPostSignUp(data)
+			} else {
+				alert("This account already exists. Please log in.")
+				renderLogin()
+			}
+		})
+}
 
 function fetchGetEmail() {
 	fetch(`${baseUrl}/api/v1/users`)
