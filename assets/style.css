@@ -200,6 +200,7 @@ textarea {
 	font-size: 100px;
 	position: absolute;
 	z-index: 1;
+	cursor: pointer;
 }
 
 #next {
@@ -210,6 +211,7 @@ textarea {
 	font-size: 100px;
 	position: absolute;
 	z-index: 1;
+	cursor: pointer;
 }
 
 input[type='submit'] {
