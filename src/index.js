@@ -38,6 +38,8 @@ const editReminderForm = document.querySelector('#editReminderForm')
 const deleteReminderBtn = document.querySelector('#deleteReminderBtn')
 const cardH3Div = document.querySelector('#cardH3Div')
 const userCardsDiv = document.querySelector('#userCardsDiv')
+const prevDiv = document.querySelector('#prev')
+const nextDiv = document.querySelector('#next')
 
 // EVENT HANDLERS
 
@@ -50,6 +52,10 @@ cardDiv.addEventListener('click', event => {
 	if (event.target.matches("img")) {
 		console.log(event.target.src)
 		renderCardImage(event.target.src, event.target.alt)
+	} else if (event.target === prevDiv) {
+		cardDiv.scrollLeft -= 300
+	} else if (event.target === nextDiv) {
+		cardDiv.scrollLeft += 300
 	}
 })
 

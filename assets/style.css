@@ -98,6 +98,7 @@ html, body {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	padding-left: 10px;
+	scroll-behavior: smooth;
 }
 
 .card-div::-webkit-scrollbar {
